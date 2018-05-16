@@ -1,0 +1,7 @@
+web-api-key : AIzaSyCiwQSBm2B9MvUCbh6LwoQiq-SfbEe54AQ
+
+sender-id : 115674257881
+
+bvn
+accountType : 
+accountNo

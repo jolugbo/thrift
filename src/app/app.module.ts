@@ -5,13 +5,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule, AngularFireAuth} from 'angularfire2/auth';
+import { HttpModule } from '@angular/http';
+import {apiServices} from '../providers/apiServices'
 
 export const firebaseConfig = {
-  apikey : "AIzaSyCiwQSBm2B9MvUCbh6LwoQiq-SfbEe54AQ",
+  apiKey : "AIzaSyCiwQSBm2B9MvUCbh6LwoQiq-SfbEe54AQ",
   authDomain: "thrift-backend.firebaseapp.com",
   databaseURL: "http://thrift-backend.firebaseio.com",
   storageBucket: "thrift-backend.appspot.com",
@@ -20,23 +22,24 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    LoginPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    apiServices,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
