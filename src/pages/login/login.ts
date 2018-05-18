@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {MenuPage} from '../menu/menu';
-import {apiServices} from '../../providers/apiServices';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { MenuPage } from '../menu/menu';
+import { apiServices } from '../../providers/apiServices';
+import {utilServices} from '../../providers/util';
 
 /**
  * Generated class for the LoginPage page.
@@ -17,33 +18,53 @@ import {apiServices} from '../../providers/apiServices';
 })
 export class LoginPage {
   responseData: any;
-  userRecord = {
-    agentid:'',
-    password:''
+  loginData = {
+    agentid: '',
+    password: ''
   }
-   regPage: any;
-   MenuPage: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public apiServices: apiServices) {
+  userRecord = {
+    id:'',
+    email:'',
+    default:'',
+    firstname:'',
+    agentid:'',
+    token:''
+  }
+  regPage: any;
+  HomePage: any;
+
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController,
+    public navParams: NavParams, public apiServices: apiServices,
+    public utils: utilServices) {
     this.regPage = 'RegisterPage';
-    this.MenuPage = 'MenuPage';
+    this.HomePage = 'MenuPage';
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-  signIn(){
-   /* this.apiServices.loginUser(this.userRecord,'agent/login').then((result)=>{
+  signIn() {
+    this.apiServices.loginUser(this.loginData, 'agent/login').then((result) => {
       this.responseData = result;
-      if(this.responseData.userRecord){
-        console.log(this.responseData);
-        //this.navCtrl.setRoot(this.regPage);
+      if (this.responseData.id) {
+        this.userRecord = this.responseData;
+        this.userRecord.token = this.generateToken();
+        this.utils.localSave(this.userRecord);
+        this.utils.presentAlert('Login Successful!','');
+        this.navCtrl.setRoot(this.HomePage); 
       }
-      else{
-        console.log("invalid user");
+      else {
+        this.utils.presentAlert('Login Error!',this.responseData.message);
       }
-    },(err) =>{
+    }, (err) => {
       console.error(err);
-    })*/
-    this.navCtrl.setRoot(this.MenuPage);
+    })
+  }
+  generateToken(){
+    let rd = () => {
+        return Math.floor((1+Math.random())*0x10000)
+        .toString(16).substring(1);
+    }
+    return rd()+rd()+'-'+rd()+'-'+rd()+'-'+rd()+'-'+rd()+rd()+rd()
   }
 }

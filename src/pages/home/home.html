@@ -1,17 +1,32 @@
 <ion-header>
- <ion-toolbar color="secondary">
-   <img src="assets/imgs/logo.png" class="logo"/>
- </ion-toolbar>
- <ion-toolbar color="secondary">
-  <button ion-button clear [navPush]="logPage">Sign In</button>>
-</ion-toolbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Home</ion-title>
+      </ion-navbar>
+  <!--ion-toolbar color="secondary">
+    <img src="assets/imgs/logo.png" class="logo" />
+  </ion-toolbar>
+  <ion-toolbar color="secondary">
+    <button ion-button clear [navPush]="logPage">Sign In</button>>
+  </ion-toolbar-->
 </ion-header>
+  
 
 <ion-content>
+    <ion-list *ngFor="let menu of menuData" no-padding>
+        <ion-card>
+          <!--img src={{menu.pic}}/>
+          <div class="card-title" [navPush]=menu.pushPage>{{menu.title}}</div-->
+            Latest 5 transaction Details
+        </ion-card>
+      </ion-list>
   <ion-list *ngFor="let menu of menuData" no-padding>
     <ion-card>
-      <img src={{menu.pic}}/>
-      <div class="card-title" [navPush]=menu.pushPage>{{menu.title}}</div>
+      <!--img src={{menu.pic}}/>
+      <div class="card-title" [navPush]=menu.pushPage>{{menu.title}}</div-->
+        Latest 5 registered Customer Details
     </ion-card>
   </ion-list>
 

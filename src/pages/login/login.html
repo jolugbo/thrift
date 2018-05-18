@@ -3,17 +3,22 @@
   <ion-navbar>
     <ion-title>Sign into App</ion-title>
   </ion-navbar>
-
+<ion-toolbar color="secondary">
+    <img src="assets/imgs/logo.png" class="logo" />
+  </ion-toolbar>
+  <ion-toolbar color="secondary">
+    <h2>Thrift Application</h2>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-item>
     <ion-label color="danger">Agent ID</ion-label>
-    <ion-input type="text" [(ngModel)]="userRecord.agentid" name="agentId" required></ion-input>
+    <ion-input type="text" [(ngModel)]="loginData.agentid" name="agentId" required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="danger">Password</ion-label>
-    <ion-input type="password" [(ngModel)]="userRecord.password" name="password" required></ion-input>
+    <ion-input type="password" [(ngModel)]="loginData.password" name="password" required></ion-input>
   </ion-item>
   <p>Register an account using a valid email address</p>
   <button ion-button full color="danger" (click)="signIn()">Sign in</button>

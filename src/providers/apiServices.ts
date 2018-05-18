@@ -4,7 +4,8 @@ import 'rxjs/add/operator/map';
 
 let _API_URL_FOR ={
     Login:"http://www.avantesoft.com/thrift/api/",
-    Reg:"https://www.moloyal.com/thrift/api/",
+    Reg:"http://www.avantesoft.com/thrift/api/",
+    AcctType:"http://www.avantesoft.com/thrift/api/getAllAccounts",
 }
 
 @Injectable()
@@ -28,6 +29,20 @@ loginUser(userRecord,type){
     return new Promise((resolve,reject)=> {
         let headers = new Headers();
         this.http.post(_API_URL_FOR.Login + type, JSON.stringify(userRecord),{headers : headers})
+        .subscribe(res=>{
+            resolve(res.json());
+            console.log(res.json());
+        },(err)=>{
+            reject(err);
+            console.log(err);
+        });
+    }); 
+}
+
+getAcctTypes(){
+    return new Promise((resolve,reject)=> {
+        let headers = new Headers();
+        this.http.get(_API_URL_FOR.AcctType,{headers : headers})
         .subscribe(res=>{
             resolve(res.json());
             console.log(res.json());

@@ -3,14 +3,18 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
-import {AngularFireModule} from 'angularfire2';
-import {AngularFireDatabaseModule} from 'angularfire2/database';
-import {AngularFireAuthModule, AngularFireAuth} from 'angularfire2/auth';
+import { RegisterPage } from './../pages/register/register';
+import { HomePage } from '../pages/home/home';
+import { AngularFireModule} from 'angularfire2';
+import { AngularFireDatabaseModule} from 'angularfire2/database';
+import { AngularFireAuthModule, AngularFireAuth} from 'angularfire2/auth';
 import { HttpModule } from '@angular/http';
-import {apiServices} from '../providers/apiServices'
+import { apiServices} from '../providers/apiServices';
+import { utilServices} from '../providers/util';
+import { IonicStorageModule} from '@ionic/storage';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 export const firebaseConfig = {
   apiKey : "AIzaSyCiwQSBm2B9MvUCbh6LwoQiq-SfbEe54AQ",
@@ -22,24 +26,31 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage
+    LoginPage,
+    HomePage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule,HttpModule
+    AngularFireAuthModule,HttpModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage
+    LoginPage,
+    HomePage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     apiServices,
+    utilServices,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

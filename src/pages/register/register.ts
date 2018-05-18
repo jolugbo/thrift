@@ -3,7 +3,8 @@ import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angul
 import {HomePage} from '../home/home';
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import {apiServices} from '../../providers/apiServices'
+import {apiServices} from '../../providers/apiServices';
+import {utilServices} from '../../providers/util';
 
 /**
  * Generated class for the RegisterPage page.
@@ -19,17 +20,34 @@ import {apiServices} from '../../providers/apiServices'
 })
 export class RegisterPage {
   reg = {
+    pics:'',
+    phone:'',
+    account_num:'',
+    bvn:'',
+    fname:'',
+    lname:'',
+    mname:'',
     email:'',
-    passWrd1:'',
-    passWrd2:''
+    address:'',
+    city:'',
+    state:'',
+    dob:'',
+    gender:'',
+    lga:'',
   }
+
   responseData:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public alertCtrl: AlertController, private afAuth: AngularFireAuth) {
+              public alertCtrl: AlertController,public utils:utilServices, 
+              private afAuth: AngularFireAuth,private apiServices:apiServices) {
+                this.getAccTypes();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+  }
+  lunchCam(){
+    this.utils.cameraAction();
   }
   displayAlert(alertTitle,alertSub){
     let theAlert = this.alertCtrl.create({
@@ -39,22 +57,39 @@ export class RegisterPage {
     });
     theAlert.present();
   }
+  getAccTypes(){
+    this.apiServices.getAcctTypes().then((result) => {
+      this.responseData = result;
+      if (!this.responseData.error) {
+        console.log(this.responseData);
+      }
+    });
+  }
+
   registerAccount(){
-    if (this.reg.passWrd1 != this.reg.passWrd2) {
-      this.displayAlert('Error! Password Mismatch', 'Please Ensure the passwords match');
-      this.reg.passWrd1 = '';
-      this.reg.passWrd2 = '';
-    }
-    else{
-      this.afAuth.auth.createUserWithEmailAndPassword(this.reg.email,this.reg.passWrd1)
-        .then(res =>this.regSuccess(res))
-        .catch(err => this.displayAlert('Error!',err));
-    }
+    this.apiServices.loginUser(this.reg, 'customer/register').then((result) => {
+      this.responseData = result;
+      if (!this.responseData.error) {
+        console.log(this.responseData);
+        // this.userRecord = this.responseData;
+        // this.userRecord.token = this.generateToken();
+         this.utils.localSave(this.reg);
+         this.utils.presentAlert('Success!',this.responseData.message);
+         this. reg = {pics:'',phone:'',account_num:'',bvn:'',fname:'',lname:'',mname:'',email:'',address:'',city:'',state:'',dob:'',gender:'', lga:''};
+        // this.navCtrl.setRoot(this.HomePage); 
+      }
+      else {
+        //this.utils.presentAlert('Login Error!',this.responseData.message);
+      }
+    }, (err) => {
+      console.error(err);
+    })
   }
   regSuccess(result){
-    this.displayAlert(result.email,'Account created for this email address');
-    this.afAuth.auth.signInWithEmailAndPassword(this.reg.email,this.reg.passWrd1)
-      .then(res => this.navCtrl.push(HomePage))
-      .catch(err => this.displayAlert('Error!',err));
+    // this.displayAlert(result.email,'Account created for this email address');
+    // this.afAuth.auth.signInWithEmailAndPassword(this.reg.email,this.reg.passWrd1)
+    //   .then(res => this.navCtrl.push(HomePage))
+    //   .catch(err => this.displayAlert('Error!',err));
   }
+  
 }
