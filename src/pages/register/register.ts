@@ -48,7 +48,7 @@ export class RegisterPage {
   }
   lunchCam(){
     this.utils.cameraAction();
-  }
+  } 
   displayAlert(alertTitle,alertSub){
     let theAlert = this.alertCtrl.create({
       title:alertTitle,
