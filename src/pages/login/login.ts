@@ -66,5 +66,7 @@ export class LoginPage {
         .toString(16).substring(1);
     }
     return rd()+rd()+'-'+rd()+'-'+rd()+'-'+rd()+'-'+rd()+rd()+rd()
+    
   }
+
 }

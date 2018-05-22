@@ -1,6 +1,7 @@
 import { RegisterPage } from './../register/register';
 import { LoginPage } from './../login/login';
 import { HomePage } from './../home/home';
+import {Savings} from '../savings/savings'
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Nav, Platform } from 'ionic-angular';
  
@@ -34,7 +35,8 @@ export class MenuPage {
      this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Customer Registration', component: RegisterPage },
-      { title: 'Logout ', component: LoginPage }
+      { title: 'Customer Savings', component: Savings },
+      { title: 'Logout ', component: LoginPage },
     ];
   }
  

@@ -6,18 +6,19 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from './../pages/register/register';
+import { Savings } from './../pages/savings/savings'
 import { HomePage } from '../pages/home/home';
-import { AngularFireModule} from 'angularfire2';
-import { AngularFireDatabaseModule} from 'angularfire2/database';
-import { AngularFireAuthModule, AngularFireAuth} from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { HttpModule } from '@angular/http';
-import { apiServices} from '../providers/apiServices';
-import { utilServices} from '../providers/util';
-import { IonicStorageModule} from '@ionic/storage';
+import { apiServices } from '../providers/apiServices';
+import { utilServices } from '../providers/util';
+import { IonicStorageModule } from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
 export const firebaseConfig = {
-  apiKey : "AIzaSyCiwQSBm2B9MvUCbh6LwoQiq-SfbEe54AQ",
+  apiKey: "AIzaSyCiwQSBm2B9MvUCbh6LwoQiq-SfbEe54AQ",
   authDomain: "thrift-backend.firebaseapp.com",
   databaseURL: "http://thrift-backend.firebaseio.com",
   storageBucket: "thrift-backend.appspot.com",
@@ -28,14 +29,15 @@ export const firebaseConfig = {
     MyApp,
     LoginPage,
     HomePage,
-    RegisterPage
+    RegisterPage,
+    Savings
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule,HttpModule,
+    AngularFireAuthModule, HttpModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -43,7 +45,8 @@ export const firebaseConfig = {
     MyApp,
     LoginPage,
     HomePage,
-    RegisterPage
+    RegisterPage,
+    Savings
   ],
   providers: [
     StatusBar,
@@ -51,7 +54,7 @@ export const firebaseConfig = {
     apiServices,
     utilServices,
     Camera,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
