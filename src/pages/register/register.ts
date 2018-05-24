@@ -5,6 +5,7 @@ import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import {apiServices} from '../../providers/apiServices';
 import {utilServices} from '../../providers/util';
+import { Camera, CameraOptions } from "@ionic-native/camera";
 
 /**
  * Generated class for the RegisterPage page.
@@ -22,7 +23,6 @@ export class RegisterPage {
   reg = {
     pics:'',
     phone:'',
-    account_num:'',
     bvn:'',
     fname:'',
     lname:'',
@@ -39,7 +39,8 @@ export class RegisterPage {
   responseData:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public alertCtrl: AlertController,public utils:utilServices, 
-              private afAuth: AngularFireAuth,private apiServices:apiServices) {
+              private afAuth: AngularFireAuth,private apiServices:apiServices,
+              private camera:Camera) {
                 this.getAccTypes();
   }
 
@@ -73,9 +74,9 @@ export class RegisterPage {
         console.log(this.responseData);
         // this.userRecord = this.responseData;
         // this.userRecord.token = this.generateToken();
-         this.utils.localSave(this.reg);
+         this.utils.localSave('AgentDetails',this.reg);
          this.utils.presentAlert('Success!',this.responseData.message);
-         this. reg = {pics:'',phone:'',account_num:'',bvn:'',fname:'',lname:'',mname:'',email:'',address:'',city:'',state:'',dob:'',gender:'', lga:''};
+         this. reg = {pics:'',phone:'',bvn:'',fname:'',lname:'',mname:'',email:'',address:'',city:'',state:'',dob:'',gender:'', lga:''};
         // this.navCtrl.setRoot(this.HomePage); 
       }
       else {
@@ -85,11 +86,28 @@ export class RegisterPage {
       console.error(err);
     })
   }
-  regSuccess(result){
-    // this.displayAlert(result.email,'Account created for this email address');
-    // this.afAuth.auth.signInWithEmailAndPassword(this.reg.email,this.reg.passWrd1)
-    //   .then(res => this.navCtrl.push(HomePage))
-    //   .catch(err => this.displayAlert('Error!',err));
-  }
-  
+
+  takePhoto() {
+    const options: CameraOptions = {
+        quality: 50,
+        destinationType: this.camera.DestinationType.DATA_URL,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+        targetWidth: 600,
+        targetHeight: 600,
+        saveToPhotoAlbum: false
+    };
+    
+    this.camera.getPicture(options).then(
+        imageData => {
+          // this.base64Image = "data:image/jpeg;base64," + imageData;
+          // this.photos.push(this.base64Image);
+          // this.photos.reverse();
+          // this.sendData(imageData);
+       },
+       err => {
+         console.log(err);
+       }
+    );
+    }
 }

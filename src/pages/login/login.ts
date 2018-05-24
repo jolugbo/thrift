@@ -49,7 +49,7 @@ export class LoginPage {
       if (this.responseData.id) {
         this.userRecord = this.responseData;
         this.userRecord.token = this.generateToken();
-        this.utils.localSave(this.userRecord);
+        this.utils.localSave('AgentDetails',this.userRecord);
         this.utils.presentAlert('Login Successful!','');
         this.navCtrl.setRoot(this.HomePage); 
       }

@@ -17,7 +17,7 @@
 
   <ion-item>
     <!--ion-label color="danger">Picture</ion-label-->
-    <button ion-button full color="secondary" (click)="lunchCam()">Snap pic</button>
+    <button ion-button full color="secondary" (click)="takePhoto()">Snap pic</button>
   </ion-item>
 
   <ion-item>
@@ -25,10 +25,6 @@
     <ion-input type="number" [(ngModel)]="reg.phone" name="phone" required></ion-input>
   </ion-item>
 
-  <ion-item>
-    <ion-label color="danger">Account Number</ion-label>
-    <ion-input type="number" [(ngModel)]="reg.account_num" name="account_num" required></ion-input>
-  </ion-item>
 
   <ion-item>
     <ion-label color="danger">BVN</ion-label>
