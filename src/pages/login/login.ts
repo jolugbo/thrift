@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { MenuPage } from '../menu/menu';
 import { apiServices } from '../../providers/apiServices';
-import {utilServices} from '../../providers/util';
+import { utilServices } from '../../providers/util';
 
 /**
  * Generated class for the LoginPage page.
@@ -23,12 +23,12 @@ export class LoginPage {
     password: ''
   }
   userRecord = {
-    id:'',
-    email:'',
-    default:'',
-    firstname:'',
-    agentid:'',
-    token:''
+    id: '',
+    email: '',
+    default: '',
+    firstname: '',
+    agentid: '',
+    token: ''
   }
   regPage: any;
   HomePage: any;
@@ -49,24 +49,28 @@ export class LoginPage {
       if (this.responseData.id) {
         this.userRecord = this.responseData;
         this.userRecord.token = this.generateToken();
-        this.utils.localSave('AgentDetails',this.userRecord);
-        this.utils.presentAlert('Login Successful!','');
-        this.navCtrl.setRoot(this.HomePage); 
+        this.utils.localSave('AgentDetails', this.userRecord);
+        this.apiServices.getAcctTypes().then((res) => {
+          console.log(res);
+          this.utils.localSave('AccountTypes', res);
+        });
+        this.utils.presentAlert('Login Successful!', '');
+        this.navCtrl.setRoot(this.HomePage);
       }
       else {
-        this.utils.presentAlert('Login Error!',this.responseData.message);
+        this.utils.presentAlert('Login Error!', this.responseData.message);
       }
     }, (err) => {
       console.error(err);
     })
   }
-  generateToken(){
+  generateToken() {
     let rd = () => {
-        return Math.floor((1+Math.random())*0x10000)
+      return Math.floor((1 + Math.random()) * 0x10000)
         .toString(16).substring(1);
     }
-    return rd()+rd()+'-'+rd()+'-'+rd()+'-'+rd()+'-'+rd()+rd()+rd()
-    
+    return rd() + rd() + '-' + rd() + '-' + rd() + '-' + rd() + '-' + rd() + rd() + rd()
+
   }
 
 }

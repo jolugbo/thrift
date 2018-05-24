@@ -1,0 +1,40 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>acct-type</ion-title>
+      <ion-buttons end>
+        <button ion-button (click)="closeModalWthoutSlctn()"> Close </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-header>
+
+      <ion-navbar>
+        <ion-title>search</ion-title>
+        <ion-buttons end>
+          <button ion-button (click)="closeModalWthoutSlctn()"> Close </button>
+        </ion-buttons>
+      </ion-navbar>
+    
+    </ion-header>
+    
+    
+    <ion-content padding>
+      <ion-card >
+          <ion-item class="search-car-items" *ngFor="let account of AccountTypeResult.accounts">
+            <h2> {{account.firstName}} </h2>
+            <p>Description: {{account.desc}}</p><br/>
+            <button ion-button primary item-end (click)="closeModalWthSlctn(account)"> Select</button>
+          </ion-item>
+      </ion-card>
+    </ion-content>
+  

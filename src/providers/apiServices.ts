@@ -15,6 +15,7 @@ let _API_URL_FOR = {
 @Injectable()
 export class apiServices {
     agentRecord = {}
+    public acctType;
     constructor(public http: Http) {
         console.log('Hello api services');
     }
@@ -61,7 +62,7 @@ export class apiServices {
             this.http.get(_API_URL_FOR.AcctType, { headers: headers })
                 .subscribe(res => {
                     resolve(res.json());
-                    console.log(res.json());
+                    this.acctType = res.json();
                 }, (err) => {
                     reject(err);
                     console.log(err);
