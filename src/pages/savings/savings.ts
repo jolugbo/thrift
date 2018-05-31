@@ -40,12 +40,15 @@ export class Savings {
 
     }
     saveRecord() {
-        console.log(this.saveRec);
         this.utils.localGet('AgentDetails').then((result) => {
             this.responseData = result;
-            this.saveRec.agentId = this.responseData.agentId;
+            this.saveRec.agentId = this.responseData.id;
             this.apiService.savings(this.saveRec).then((result) => {
                 console.log(result);
+                this.utils.presentAlert('Success!',this.responseData.message);
+                this.saveRec.customerId= "";this.saveRec.transAmount= "";this.saveRec.accountId= "";this.saveRec.agentId= "";
+                this.displayRec.fullName= "";this.displayRec.AccountType= "";this.displayRec.BVN= "";this.displayRec.AccountNumber= "";this.displayRec.Lga= "";this.displayRec.Gender= "";
+                
             });
         });
     }
@@ -56,7 +59,7 @@ export class Savings {
             searchResultPage.onDidDismiss((data) => {
                 if (data) {
                     console.log(data);
-                    this.saveRec.customerId = data.sn; //done
+                    this.saveRec.customerId = data.id; //done
                     this.displayRec.fullName = data.firstName + " " + data.mname + " " + data.lastName;
                     //this.displayRec.AccountType = fetchAccoutType;
                     this.displayRec.BVN = data.BVN_num;
@@ -65,7 +68,7 @@ export class Savings {
                     this.displayRec.Gender = data.gender;
                 }
                 else
-                    this.utils.presentAlert("No Data","No Record for search");
+                    this.utils.presentAlert("No Data","No User Selected");
             });
         });
     }
@@ -79,7 +82,7 @@ export class Savings {
                     this.displayRec.AccountType = data.account_name;
                 }
                 else
-                this.utils.presentAlert("No Data","No Account Type Configured");
+                this.utils.presentAlert("No Data","No Account Type Selected");
             });
         });
     }
