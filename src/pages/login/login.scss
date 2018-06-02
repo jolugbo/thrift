@@ -1,13 +1,35 @@
 page-login {
 text-align: center;
 p{
-    color: color($colors,light);
+    color: color($colors,dark);
 }
 .logo{
     width:30%;
     height:10%;
 }
+.button-inner{
+    color: color($colors,dark);
+}
 ion-toolbar{
     text-align: center;
+}
+ion-content{
+    background-image: url('../assets/imgs/bg.png');
+}
+.centered {
+
+    margin-top: 90%;
+}
+.item-md{
+    background-color: transparent;
+    color: color($colors,dark);
+}
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) 
+.item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) 
+.item-inner{
+    background-color: transparent;
+}
+.item-input ion-input, .item-input ion-textarea{
+    background-color: transparent;
 }
 }

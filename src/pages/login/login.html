@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <!--ion-navbar>
     <ion-title>Sign into App</ion-title>
   </ion-navbar>
 <ion-toolbar color="secondary">
@@ -8,18 +8,23 @@
   </ion-toolbar>
   <ion-toolbar color="secondary">
     <h2>Thrift Application</h2>
-  </ion-toolbar>
+  </ion-toolbar -->
 </ion-header>
 <ion-content>
-  <ion-item>
-    <ion-label color="danger">Agent ID</ion-label>
-    <ion-input type="text" [(ngModel)]="loginData.agentid" name="agentId" required></ion-input>
-  </ion-item>
+  <div><h1>Alajo Shomolu</h1></div>
+  <div class="centered">
+    <ion-item>
+      <ion-label color="dark">Agent ID</ion-label>
+      <ion-input type="text" [(ngModel)]="loginData.agentid" name="agentId" required></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label color="danger">Password</ion-label>
-    <ion-input type="password" [(ngModel)]="loginData.password" name="password" required></ion-input>
-  </ion-item>
-  <p>Register an account using a valid email address</p>
-  <button ion-button full color="danger" (click)="signIn()">Sign in</button>
+    <ion-item>
+      <ion-label color="dark">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="loginData.password" name="password" required></ion-input>
+    </ion-item>
+    <p>Sign In For Increase Productivity</p>
+    <button ion-button round full  color="danger" (click)="signIn()">Sign in &nbsp;&nbsp;
+      <ion-icon name="md-log-in"></ion-icon>
+    </button>
+  </div>
 </ion-content>

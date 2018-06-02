@@ -44,8 +44,11 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
   signIn() {
+    console.log(this.loginData);
+    
     this.apiServices.loginUser(this.loginData, 'agent/login').then((result) => {
       this.responseData = result;
+      console.log(result);
       if (this.responseData.id) {
         this.userRecord = this.responseData;
         this.userRecord.token = this.generateToken();
