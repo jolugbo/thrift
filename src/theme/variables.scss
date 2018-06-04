@@ -22,7 +22,7 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-$background-color: #35b729;
+$background-color: transparent;
 $card-ios-margin-left:0px;
 $card-ios-margin-right:0px;
 $card-md-margin-left:0px;
@@ -45,9 +45,25 @@ $colors: (
   danger:     #FFA500,
   light:      #C9DCB3,
   dark:       #000,
+  clear:       #fff,
 );
 
-
+.picker-md .picker-wrapper{
+  border-top: 2px solid #b8b8b8 !important;
+  border-right: 2px solid #b8b8b8 !important;
+  background: #1d83b1 !important;
+  border-radius: 25px !important; 
+}
+.picker-wrapper{
+  top: 10px !important;
+  width: 60% !important;
+}
+.button-inner{
+  color: black;
+}
+ion-label{
+  color: black;
+}
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
@@ -92,6 +108,6 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
-$font-family-md-base: "PasseroOne-Regular";
-$font-family-ios-base: "PasseroOne-Regular";
-$font-family-wp-base: "PasseroOne-Regular";
+$font-family-md-base: "AbrilFatface-Regular";
+$font-family-ios-base: "AbrilFatface-Regular";
+$font-family-wp-base: "AbrilFatface-Regular";

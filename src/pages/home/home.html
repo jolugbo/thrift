@@ -15,19 +15,49 @@
   
 
 <ion-content>
-    <ion-list *ngFor="let menu of menuData" no-padding>
+
+    <ion-fab top right edge>
+        <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+        <ion-fab-list>
+          <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+        </ion-fab-list>
+      </ion-fab>
+      <div padding>
+          <ion-segment [(ngModel)]="pet">
+            <ion-segment-button value="Personal">
+              Personal Records
+            </ion-segment-button>
+            <ion-segment-button value="Group">
+              Group Records
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+        
+        <div [ngSwitch]="pet">
+          <ion-list *ngSwitchCase="'Personal'">
+            <ion-item>
+              <h2>Personal</h2>
+            </ion-item>
+          </ion-list>
+        
+          <ion-list *ngSwitchCase="'Group'">
+            <ion-item>
+              <h2>Group</h2>
+            </ion-item>
+          </ion-list>
+        </div>
+    <!--ion-list *ngFor="let menu of menuData" no-padding>
         <ion-card>
-          <!--img src={{menu.pic}}/>
-          <div class="card-title" [navPush]=menu.pushPage>{{menu.title}}</div-->
             Latest 5 transaction Details
         </ion-card>
       </ion-list>
   <ion-list *ngFor="let menu of menuData" no-padding>
     <ion-card>
-      <!--img src={{menu.pic}}/>
-      <div class="card-title" [navPush]=menu.pushPage>{{menu.title}}</div-->
         Latest 5 registered Customer Details
     </ion-card>
-  </ion-list>
+  </ion-list-->
 
 </ion-content>

@@ -1,9 +1,3 @@
-<!--
-  Generated template for the RegisterPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -14,65 +8,68 @@
 </ion-header>
 
 <ion-content>
-
+  <!--button ion-button round outline color="clear" (click)="takePhoto()">Click to lunch cam</button-->
   <ion-item>
-    <!--ion-label color="danger">Picture</ion-label-->
-    <button ion-button full color="secondary" (click)="takePhoto()">Snap pic</button>
+    Customer Image
+    <button ion-button round outline color="clear" item-end icon-left (click)="takePhoto()">
+      <ion-icon name="camera"></ion-icon>
+      Lunch Cam
+    </button>
   </ion-item>
 
   <ion-item>
-    <ion-label color="danger">Phone Number</ion-label>
+    <ion-label color="dark">Phone Number</ion-label>
     <ion-input type="number" [(ngModel)]="reg.phone" name="phone" required></ion-input>
   </ion-item>
 
 
   <ion-item>
-    <ion-label color="danger">BVN</ion-label>
+    <ion-label color="dark">BVN</ion-label>
     <ion-input type="number" [(ngModel)]="reg.bvn" name="bvn" required></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label color="danger">First Name</ion-label>
+    <ion-label color="dark">First Name</ion-label>
     <ion-input type="text" [(ngModel)]="reg.fname" name="fname" required></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label color="danger">Middle Name</ion-label>
+    <ion-label color="dark">Middle Name</ion-label>
     <ion-input type="text" [(ngModel)]="reg.mname" name="mname" required></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label color="danger">Last Name</ion-label>
+    <ion-label color="dark">Last Name</ion-label>
     <ion-input type="text" [(ngModel)]="reg.lname" name="lname" required></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label color="danger">Email</ion-label>
+    <ion-label color="dark">Email</ion-label>
     <ion-input type="email" [(ngModel)]="reg.email" name="email" required></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label color="danger">Address</ion-label>
+    <ion-label color="dark">Address</ion-label>
     <ion-input type="text" [(ngModel)]="reg.address" name="address" required></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label color="danger">lga</ion-label>
+    <ion-label color="dark">lga</ion-label>
     <ion-input type="text" [(ngModel)]="reg.lga" name="lga" required></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label color="danger">City</ion-label>
+    <ion-label color="dark">City</ion-label>
     <ion-input type="text" [(ngModel)]="reg.city" name="city" required></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label color="danger">State</ion-label>
+    <ion-label color="dark">State</ion-label>
     <ion-input type="text" [(ngModel)]="reg.state" name="state" required></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label color="danger">Date Of Birth</ion-label>
+    <ion-label color="dark">Date Of Birth</ion-label>
     <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" [(ngModel)]="reg.dob"></ion-datetime>
     <!--ion-input type="text" [(ngModel)]="reg.dob" name="dob" required></ion-input-->
   </ion-item>
@@ -82,14 +79,22 @@
       Gender
     </ion-list-header>
     <ion-item>
-      <ion-label color="danger">Male</ion-label>
+      <ion-label color="dark">Male</ion-label>
       <ion-radio value="Male"></ion-radio>
     </ion-item>
     <ion-item>
-      <ion-label color="danger">Female</ion-label>
+      <ion-label color="dark">Female</ion-label>
       <ion-radio value="Female"></ion-radio>
     </ion-item>
   </ion-list>
 
-  <button ion-button full color="danger" (click)="registerAccount()">Register</button>
+  <button ion-button round full color="danger" item-end icon-right (click)="registerAccount()">
+      Register
+      <ion-icon name="md-add"></ion-icon>
+  </button>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="footer-bg">Avante-cs &copy; 2018</ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -11,47 +11,60 @@
     <div class="search">
         <!--(focusout)="searchRecord()"-->
         <ion-item>
-            <ion-label> Search(Name/AcctNo/BVN)</ion-label>
+            <ion-label color="dark"> Search(Name/AcctNo/BVN)</ion-label>
             <ion-input type="text" [(ngModel)]="searchParam" name="searchParam" required>
             </ion-input>
         </ion-item>
-        <button ion-button color="danger" (click)="searchRecord()">Search</button>
+        <button ion-button round outline color="clear" item-end icon-left (click)="searchRecord()">
+            <ion-icon name="md-search"></ion-icon>
+            Search
+        </button>
     </div>
     <div class="Form">
         <ion-item>
-            <ion-label> Transction Amount</ion-label>
+            <ion-label color="dark"> Transction Amount</ion-label>
             <ion-input type="number" [(ngModel)]="saveRec.transAmount" name="transAmount" required></ion-input>
         </ion-item>
-        <button ion-button color="danger" (click)="DisplayAcctType()">Select Account Type</button>
-
+        <button ion-button round outline color="clear" item-end icon-left (click)="DisplayAcctType()">
+            <ion-icon name="md-options"></ion-icon>
+            Select Account Type
+        </button>
         <ion-item>
-            <ion-label color="danger">Account TYPE</ion-label>
+            <ion-label color="dark">Account TYPE</ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.AccountType" name="AccountType" required></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label> Customer Name</ion-label>
+            <ion-label color="dark"> Customer Name</ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.fullName" name="name"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label> Account No</ion-label>
+            <ion-label color="dark"> Account No</ion-label>
             <ion-input type="number" [(ngModel)]="displayRec.AccountNumber" name="accountNo"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>BVN</ion-label>
+            <ion-label color="dark">BVN</ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.BVN" name="BVN"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>Account Number</ion-label>
+            <ion-label color="dark">Account Number</ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.AccountNumber" name="AccountNumber"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>Lga</ion-label>
+            <ion-label color="dark">Lga</ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.Lga" name="Lga"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>Gender</ion-label>
+            <ion-label color="dark">Gender</ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.Gender" name="Gender"></ion-input>
         </ion-item>
-        <button ion-button full color="danger" (click)="saveRecord()">Save</button>
+        <button ion-button round full color="danger" item-end icon-right (click)="saveRecord()">
+            Withdraw
+            <ion-icon name="md-add"></ion-icon>
+        </button>
     </div>
 </ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-title class="footer-bg">Avante-cs &copy; 2018</ion-title>
+    </ion-toolbar>
+</ion-footer>

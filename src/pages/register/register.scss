@@ -1,9 +1,14 @@
 page-register {
+    ion-content{
+        background-image: url('../assets/imgs/triftBG2.jpg');
+        
+    }
+  
 text-align: center;
-ion-input{
+/*ion-input{
     color:color($colors,primary);
 }
 p{
     color:color($colors,primary);
-}
+}*/
 }
