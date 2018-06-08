@@ -1,10 +1,10 @@
 <ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title>Home</ion-title>
-      </ion-navbar>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
   <!--ion-toolbar color="secondary">
     <img src="assets/imgs/logo.png" class="logo" />
   </ion-toolbar>
@@ -12,44 +12,84 @@
     <button ion-button clear [navPush]="logPage">Sign In</button>>
   </ion-toolbar-->
 </ion-header>
-  
+
 
 <ion-content>
 
-    <ion-fab top right edge>
-        <button ion-fab mini><ion-icon name="add"></ion-icon></button>
-        <ion-fab-list>
-          <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
-          <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
-          <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
-          <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
-        </ion-fab-list>
-      </ion-fab>
-      <div padding>
-          <ion-segment [(ngModel)]="pet">
-            <ion-segment-button value="Personal">
-              Personal Records
-            </ion-segment-button>
-            <ion-segment-button value="Group">
-              Group Records
-            </ion-segment-button>
-          </ion-segment>
+  <ion-fab top right edge>
+    <button ion-fab mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+    <ion-fab-list>
+      <button ion-fab>
+        <ion-icon name="logo-facebook"></ion-icon>
+      </button>
+      <button ion-fab>
+        <ion-icon name="logo-twitter"></ion-icon>
+      </button>
+      <button ion-fab>
+        <ion-icon name="logo-vimeo"></ion-icon>
+      </button>
+      <button ion-fab>
+        <ion-icon name="logo-googleplus"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+  <div padding>
+    <ion-segment [(ngModel)]="viewType">
+      <ion-segment-button value="Personal">
+        Personal Records
+      </ion-segment-button>
+      <ion-segment-button value="Group">
+        Group Records
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="viewType">
+    <ion-list *ngSwitchCase="'Personal'">
+      <ion-item>
+        <div style="display:block;">
+          <canvas baseChart [data]='doughnutChartData' [labels]='doughnutChartLabel' [chartType]='doughnutChatType'>
+          </canvas>
         </div>
-        
-        <div [ngSwitch]="pet">
-          <ion-list *ngSwitchCase="'Personal'">
-            <ion-item>
-              <h2>Personal</h2>
-            </ion-item>
-          </ion-list>
-        
-          <ion-list *ngSwitchCase="'Group'">
-            <ion-item>
-              <h2>Group</h2>
-            </ion-item>
-          </ion-list>
+      </ion-item>
+      <ion-item>
+        <div style="display:block;">
+          <canvas baseChart [data]='lineChartData' [labels]='lineChartLabel' [chartType]='lineChatType'>
+          </canvas>
         </div>
-    <!--ion-list *ngFor="let menu of menuData" no-padding>
+      </ion-item>
+      <ion-item>
+        <ion-list >
+          <ion-grid>
+              <h2>Latest 5 savings Transactions</h2>
+            <ion-row  *ngFor="let savings of fiveSavingsTransactions">
+              <ion-col col-12>
+                  <ion-card>
+                      <ion-card-header>
+                        {{savings.firstName }} {{savings.mname }} {{savings.lastName }}
+                      </ion-card-header>
+                      <ion-card-content>
+                        Transation Date:- {{savings.transDate  | date:'MM/dd/yyyy'}} {{savings.time }}<br/>
+                        Account Type:- {{savings.accountType }} <br/>
+                        Transaction Amount:- {{savings.transAmount }} <br/>
+                      </ion-card-content>
+                    </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-list>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'Group'">
+      <ion-item>
+        <h2>Group</h2>
+      </ion-item>
+    </ion-list>
+  </div>
+  <!--ion-list *ngFor="let menu of menuData" no-padding>
         <ion-card>
             Latest 5 transaction Details
         </ion-card>

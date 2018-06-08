@@ -46,6 +46,7 @@ $colors: (
   light:      #C9DCB3,
   dark:       #000,
   clear:       #fff,
+  btnColors: #0476bc,
 );
 
 .picker-md .picker-wrapper{
@@ -108,6 +109,6 @@ ion-label{
 
 @import "roboto";
 @import "noto-sans";
-$font-family-md-base: "AbrilFatface-Regular";
-$font-family-ios-base: "AbrilFatface-Regular";
-$font-family-wp-base: "AbrilFatface-Regular";
+$font-family-md-base: "Montserrat-Regular";
+$font-family-ios-base: "Montserrat-Regular";
+$font-family-wp-base: "Montserrat-Regular";

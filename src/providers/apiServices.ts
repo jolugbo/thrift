@@ -13,7 +13,7 @@ let _API_URL_FOR = {
     Withdrawals:"http://www.avantesoft.com/thrift/api/customer/withdrawal",
     PicsPath: "http://www.avantesoft.com/thrift/contents_imgs/customer_imgs",
     Search: "http://www.avantesoft.com/thrift/api/customer/search/",
-    AllSavingsRec: "http://www.avantesoft.com/thrift/api/savingtransaction/"
+    AllSavingsRec: "http://www.avantesoft.com/thrift/api/savingtransaction/",
 }
 @Injectable()
 export class apiServices {

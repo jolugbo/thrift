@@ -22,4 +22,23 @@ page-home {
     ion-toolbar{
         text-align: center;
     }
+    .card-content-md{
+        padding-left: 2px !important;
+        text-align: left;
+        color: #fb0035;
+    }
+    .grid{
+        margin: -3px !important;
+        padding: 0px !important;
+    }
+    .card-header-md{
+        color: #fb0035 !important;
+        font-weight: bold;
+    }
+    .item-md h2 {
+        margin: 2px 2px !important;
+        font-size: 2rem !important;
+        font-weight: bolder !important;
+        color: #0476bc !important;
+    }
 }

@@ -17,6 +17,7 @@ import { apiServices } from '../providers/apiServices';
 import { utilServices } from '../providers/util';
 import { IonicStorageModule } from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import {ChartsModule} from 'ng2-charts'
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCiwQSBm2B9MvUCbh6LwoQiq-SfbEe54AQ",
@@ -40,6 +41,7 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule, HttpModule,
+    ChartsModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
