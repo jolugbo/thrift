@@ -82,12 +82,18 @@ export class LoginPage {
     this.auth.auth.createUserWithEmailAndPassword(email, password)
     .then(() => {
       this.navCtrl.setRoot(this.regPage, { email });
+      })
+      .catch( error => {
+        this.utils.presentAlert('Error!', error.message);
       });
   }
   login(email, password){
     this.auth.auth.signInWithEmailAndPassword(email, password)
     .then(() => {
-        this.navCtrl.setRoot(this.HomePage, { email });
+        this.navCtrl.setRoot(this.HomePage, { email })
+        })
+        .catch( error => {
+          this.utils.presentAlert('Error!', error.message);;
       })
   }
 
