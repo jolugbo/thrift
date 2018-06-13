@@ -81,7 +81,7 @@ export class LoginPage {
   register(email, password){
     this.auth.auth.createUserWithEmailAndPassword(email, password)
     .then(() => {
-      this.navCtrl.setRoot(this.regPage, { email });
+      this.navCtrl.setRoot(this.HomePage, { email });
       })
       .catch( error => {
         this.utils.presentAlert('Error!', error.message);
