@@ -16,33 +16,36 @@ import { HttpModule } from '@angular/http';
 import { apiServices } from '../providers/apiServices';
 import { utilServices } from '../providers/util';
 import { IonicStorageModule } from '@ionic/storage';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera';
 import {ChartsModule} from 'ng2-charts'
+import {firebaseConfig } from '../config';
+import { RegisterPageModule } from '../pages/register/register.module';
 
-export const firebaseConfig = {
+/* export const firebaseConfig = {
   apiKey: "AIzaSyCiwQSBm2B9MvUCbh6LwoQiq-SfbEe54AQ",
   authDomain: "thrift-backend.firebaseapp.com",
   databaseURL: "http://thrift-backend.firebaseio.com",
   storageBucket: "thrift-backend.appspot.com",
   messagagingSenderID: '115674257881',
-};
+}; */
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
     HomePage,
-    RegisterPage,
+    //RegisterPage,
     WithdrawalPage,
     Savings
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig.fire),
     AngularFireDatabaseModule,
     AngularFireAuthModule, HttpModule,
     ChartsModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    RegisterPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -59,7 +62,8 @@ export const firebaseConfig = {
     apiServices,
     utilServices,
     Camera,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AngularFireAuth
   ]
 })
 export class AppModule { }
