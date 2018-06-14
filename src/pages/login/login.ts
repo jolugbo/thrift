@@ -46,9 +46,9 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-  signIn( ) {
+  signIn() {
     console.log(this.loginData);
-    
+
     this.apiServices.loginUser(this.loginData, 'agent/login').then((result) => {
       this.responseData = result;
       console.log(result);
@@ -78,24 +78,47 @@ export class LoginPage {
     return rd() + rd() + '-' + rd() + '-' + rd() + '-' + rd() + '-' + rd() + rd() + rd()
 
   }
-  register(email, password){
-    this.auth.auth.createUserWithEmailAndPassword(email, password)
-    .then(() => {
-      this.navCtrl.setRoot(this.HomePage, { email });
+  register(email, password) {
+    try {
+      this.auth.auth.createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        let user = this.auth.auth.currentUser;
+        user.sendEmailVerification();
+        this.utils.presentAlert('Email Verification sent.', '');
       })
-      .catch( error => {
-        this.utils.presentAlert('Error!', error.message);
-      });
+    } catch (error) {
+      this.utils.presentAlert('Error!', error.message);
+    }
   }
-  login(email, password){
-    this.auth.auth.signInWithEmailAndPassword(email, password)
+
+  login() {
+    let user = this.auth.auth.currentUser;
+    try {
+      if (user.emailVerified) {
+        this.auth.auth.signInWithEmailAndPassword(this.loginData.email, this.loginData.password);
+        this.utils.presentAlert('Login Successful!', '');
+        this.navCtrl.setRoot(this.HomePage);
+        console.log(user.email);
+        console.log(user.displayName);
+        console.log(user.emailVerified);
+      } else {
+        this.utils.presentAlert('Email not verified!', '');
+        console.log(user.email);
+        console.log(user.displayName);
+        console.log(user.emailVerified);
+      }
+    } catch (error) {
+      this.utils.presentAlert('Error!', error.message);
+    }
+  }   
+  
+
+    /* this.auth.auth.signInWithEmailAndPassword(email, password)
     .then(() => {
         this.navCtrl.setRoot(this.HomePage, { email })
         })
         .catch( error => {
           this.utils.presentAlert('Error!', error.message);;
-      })
+      }) */
   }
 
-  
-}

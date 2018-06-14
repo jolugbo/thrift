@@ -5,6 +5,7 @@ import { Savings } from '../savings/savings';
 import { WithdrawalPage } from '../withdrawal/withdrawal';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Nav, Platform } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 export interface PageInterface {
   title: string;
@@ -27,10 +28,11 @@ export class MenuPage {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
+  logOutPage: any = LoginPage;
   pages: Array<{ title: string, component: any }>;
 
 
-  constructor(public navCtrl: NavController, public platform: Platform) {
+  constructor(public navCtrl: NavController, public platform: Platform, public AngAuth: AngularFireAuth) {
     // used for an example of ngFor and navigation
 
     this.pages = [
@@ -38,7 +40,6 @@ export class MenuPage {
       { title: 'Customer Registration', component: RegisterPage },
       { title: 'Customer Savings', component: Savings },
       { title: 'Customer Withdrawals', component: WithdrawalPage },
-      { title: 'Logout ', component: LoginPage },
     ];
   }
 
@@ -47,6 +48,11 @@ export class MenuPage {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+  logout(){
+    console.log('logout');
+    this.AngAuth.auth.signOut;
+    this.navCtrl.setRoot(this.logOutPage)
+    }
 
 }
 
