@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { MenuPage } from '../menu/menu';
 import { apiServices } from '../../providers/apiServices';
 import { utilServices } from '../../providers/util';
-import { FormGroup } from '@angular/forms';
-import { AngularFireAuth } from 'angularfire2/auth';
-
 
 /**
  * Generated class for the LoginPage page.
@@ -19,11 +17,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  loginForm: FormGroup;
-  loginError: string;
   responseData: any;
   loginData = {
-    email: '',
+    agentid: '',
     password: ''
   }
   userRecord = {
@@ -37,8 +33,9 @@ export class LoginPage {
   regPage: any;
   HomePage: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public apiServices: apiServices,
-    public utils: utilServices, public auth: AngularFireAuth) {
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController,
+    public navParams: NavParams, public apiServices: apiServices,
+    public utils: utilServices) {
     this.regPage = 'RegisterPage';
     this.HomePage = 'MenuPage';
   }
@@ -46,7 +43,7 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-  signIn( ) {
+  signIn() {
     console.log(this.loginData);
     
     this.apiServices.loginUser(this.loginData, 'agent/login').then((result) => {
@@ -78,18 +75,5 @@ export class LoginPage {
     return rd() + rd() + '-' + rd() + '-' + rd() + '-' + rd() + '-' + rd() + rd() + rd()
 
   }
-  register(email, password){
-    this.auth.auth.createUserWithEmailAndPassword(email, password)
-    .then(() => {
-      this.navCtrl.setRoot(this.regPage, { email });
-      });
-  }
-  login(email, password){
-    this.auth.auth.signInWithEmailAndPassword(email, password)
-    .then(() => {
-        this.navCtrl.setRoot(this.HomePage, { email });
-      })
-  }
 
-  
 }

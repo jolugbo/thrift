@@ -1,6 +1,6 @@
 <ion-header>
 
-    <!--ion-navbar>
+  <!--ion-navbar>
     <ion-title>Sign into App</ion-title>
   </ion-navbar>
 <ion-toolbar color="secondary">
@@ -9,32 +9,27 @@
   </ion-toolbar -->
 </ion-header>
 <ion-content>
-    <div>
-        <img src="assets/imgs/logo.png" class="logo" />
-        <h1>Alajo Shomolu</h1>
-    </div>
-    <div class="centered">
-        <ion-item>
-            <ion-label color="dark">E-mail</ion-label>
-            <ion-input type="text" [(ngModel)]="loginData.email" name="email" required></ion-input>
-        </ion-item>
+  <div>
+    <img src="assets/imgs/logo.png" class="logo" />
+    <h1>Alajo Shomolu</h1></div>
+  <div class="centered">
+    <ion-item>
+      <ion-label color="dark">Agent ID</ion-label>
+      <ion-input type="text" [(ngModel)]="loginData.agentid" name="agentId" required></ion-input>
+    </ion-item>
 
-        <ion-item>
-            <ion-label color="dark">Password</ion-label>
-            <ion-input type="password" [(ngModel)]="loginData.password" name="password" required></ion-input>
-        </ion-item>
-        <p>Sign In For Increase Productivity</p>
-        <!-- <button ion-button round full outline color="btnColors" (click)="signIn()">Sign in &nbsp;&nbsp;
+    <ion-item>
+      <ion-label color="dark">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="loginData.password" name="password" required></ion-input>
+    </ion-item>
+    <p>Sign In For Increase Productivity</p>
+    <button ion-button round full outline color="btnColors" (click)="signIn()">Sign in &nbsp;&nbsp;
       <ion-icon name="md-log-in"></ion-icon>
-    </button> -->
-    </div>
-    <div text-center>
-        <button ion-button (click)="register(loginData.email, loginData.password)">Register</button>
-        <button ion-button (click)="login(loginData.email, loginData.password)">Log In</button>
-    </div>
+    </button>
+  </div>
 </ion-content>
 <ion-footer>
-    <ion-toolbar>
-        <ion-title class="footer-bg">Avante-cs &copy; 2018</ion-title>
-    </ion-toolbar>
+  <ion-toolbar >
+    <ion-title class="footer-bg">Avante-cs &copy; 2018</ion-title>
+  </ion-toolbar>
 </ion-footer>
