@@ -44,6 +44,7 @@ export class Savings {
             this.responseData = result;
             this.saveRec.agentId = this.responseData.id;
             this.apiService.savings(this.saveRec).then((result) => {
+                this.responseData = result;
                 console.log(result);
                 this.utils.presentAlert('Success!',this.responseData.message);
                 this.saveRec.customerId= "";this.saveRec.transAmount= "";this.saveRec.accountId= "";this.saveRec.agentId= "";
@@ -73,7 +74,22 @@ export class Savings {
         });
     }
     DisplayAcctType(){
-        this.utils.localGet("AccountTypes").then((result) => {
+      this.apiService.getAcctTypesById(this.saveRec.customerId).then((res) => {
+            console.log(res);
+            const AccountTypesPage: Modal = this.modal.create("AcctTypePage", { data: res });
+            AccountTypesPage.present();
+            AccountTypesPage.onDidDismiss((data) => {
+                if (data) {
+                    this.saveRec.accountId = data.sn;
+                    this.displayRec.AccountType = data.account_name;
+                    this.displayRec.AccountNumber=  data.account_num
+                }
+                else
+                this.utils.presentAlert("No Data","No Account Type Selected");
+            });
+          });
+          /*
+           this.utils.localGet("AccountTypes").then((result) => {
             const AccountTypesPage: Modal = this.modal.create("AcctTypePage", { data: result });
             AccountTypesPage.present();
             AccountTypesPage.onDidDismiss((data) => {
@@ -84,6 +100,6 @@ export class Savings {
                 else
                 this.utils.presentAlert("No Data","No Account Type Selected");
             });
-        });
+        });*/
     }
 }

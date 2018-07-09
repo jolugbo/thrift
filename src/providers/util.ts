@@ -27,6 +27,7 @@ export class utilServices {
         return new Promise((resolve, reject) => {
             let headers = new Headers();
             this.storage.get(keyName).then(res => {
+                console.log(res);
                 resolve(res);
             }, (err) => {
                 reject(err);

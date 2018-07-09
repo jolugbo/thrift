@@ -21,6 +21,7 @@ export class WithdrawalPage {
   searchParam: any;
   accountTypes: any;
   responseData: any;
+  responseDatamsg: any;
   saveRec = {
       customerId: '',
       transAmount: '',
@@ -52,8 +53,8 @@ export class WithdrawalPage {
           this.responseData = result;
           this.saveRec.agentId = this.responseData.id;
           this.apiService.withdrawals(this.saveRec).then((result) => {
-              console.log(result);
-              this.utils.presentAlert('Success!',this.responseData.message);
+            this.responseDatamsg = result;
+            this.utils.presentAlert('Success!',this.responseDatamsg.message);
               this.saveRec.customerId= "";this.saveRec.transAmount= "";this.saveRec.accountId= "";this.saveRec.agentId= "";
               this.displayRec.fullName= "";this.displayRec.AccountType= "";this.displayRec.BVN= "";this.displayRec.AccountNumber= "";this.displayRec.Lga= "";this.displayRec.Gender= "";
               
@@ -81,7 +82,22 @@ export class WithdrawalPage {
       });
   }
   DisplayAcctType(){
-      this.utils.localGet("AccountTypes").then((result) => {
+    this.apiService.getAcctTypesById(this.saveRec.customerId).then((res) => {
+          console.log(res);
+          const AccountTypesPage: Modal = this.modal.create("AcctTypePage", { data: res });
+          AccountTypesPage.present();
+          AccountTypesPage.onDidDismiss((data) => {
+              if (data) {
+                  this.saveRec.accountId = data.sn;
+                  this.displayRec.AccountType = data.account_name;
+                  this.displayRec.AccountNumber=  data.account_num
+              }
+              else
+              this.utils.presentAlert("No Data","No Account Type Selected");
+          });
+        });
+        /*
+         this.utils.localGet("AccountTypes").then((result) => {
           const AccountTypesPage: Modal = this.modal.create("AcctTypePage", { data: result });
           AccountTypesPage.present();
           AccountTypesPage.onDidDismiss((data) => {
@@ -90,8 +106,8 @@ export class WithdrawalPage {
                   this.displayRec.AccountType = data.account_name;
               }
               else
-              this.utils.presentAlert("No Data","No Account Type Configured");
+              this.utils.presentAlert("No Data","No Account Type Selected");
           });
-      });
+      });*/
   }
 }

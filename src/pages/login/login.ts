@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { MenuPage } from '../menu/menu';
 import { apiServices } from '../../providers/apiServices';
 import { utilServices } from '../../providers/util';
+import { ResetPage } from '../reset/reset';
 
 /**
  * Generated class for the LoginPage page.
@@ -57,7 +58,7 @@ export class LoginPage {
           console.log(res);
           this.utils.localSave('AccountTypes', res);
         });
-        this.utils.presentAlert('Login Successful!', '');
+        this.utils.presentAlert('Login Successful!', 'Welcome ' + this.responseData.firstname);
         this.navCtrl.setRoot(this.HomePage);
       }
       else {
@@ -74,6 +75,9 @@ export class LoginPage {
     }
     return rd() + rd() + '-' + rd() + '-' + rd() + '-' + rd() + '-' + rd() + rd() + rd()
 
+  }
+  passwordReset(){
+    this.navCtrl.setRoot(ResetPage);
   }
 
 }

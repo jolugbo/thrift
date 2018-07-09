@@ -22,7 +22,8 @@
       <ion-label color="dark">Password</ion-label>
       <ion-input type="password" [(ngModel)]="loginData.password" name="password" required></ion-input>
     </ion-item>
-    <p>Sign In For Increase Productivity</p>
+    <p><button ion-button clear  class="btn-forgot" (click)="passwordReset()">forgot password?</button>
+    </p>
     <button ion-button round full outline color="btnColors" (click)="signIn()">Sign in &nbsp;&nbsp;
       <ion-icon name="md-log-in"></ion-icon>
     </button>

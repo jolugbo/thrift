@@ -13,68 +13,71 @@
     Customer Image
     <button ion-button round outline color="clear" item-end icon-left (click)="takePhoto()">
       <ion-icon name="camera"></ion-icon>
-      Lunch Cam
+      take photo
     </button>
   </ion-item>
-
+  
+  <!--button ion-button round outline color="clear" item-end icon-left (click)="DisplayAcctType()">
+      <ion-icon name="md-options"></ion-icon>
+      Select Account Type
+  </button-->
   <ion-item>
     <ion-label color="dark">Phone Number</ion-label>
-    <ion-input type="number" [(ngModel)]="reg.phone" name="phone" required></ion-input>
+    <ion-input type="number"  [(ngModel)]="reg.phone" required></ion-input>
   </ion-item>
-
 
   <ion-item>
     <ion-label color="dark">BVN</ion-label>
-    <ion-input type="number" [(ngModel)]="reg.bvn" name="bvn" required></ion-input>
+    <ion-input type="number"  [(ngModel)]="reg.bvn"  required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="dark">First Name</ion-label>
-    <ion-input type="text" [(ngModel)]="reg.fname" name="fname" required></ion-input>
+    <ion-input type="text"  [(ngModel)]="reg.fname"  required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="dark">Middle Name</ion-label>
-    <ion-input type="text" [(ngModel)]="reg.mname" name="mname" required></ion-input>
+    <ion-input type="text"   [(ngModel)]="reg.mname" required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="dark">Last Name</ion-label>
-    <ion-input type="text" [(ngModel)]="reg.lname" name="lname" required></ion-input>
+    <ion-input type="text"  [(ngModel)]="reg.lname"  required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="dark">Email</ion-label>
-    <ion-input type="email" [(ngModel)]="reg.email" name="email" required></ion-input>
+    <ion-input type="email" [(ngModel)]="reg.email"  required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="dark">Address</ion-label>
-    <ion-input type="text" [(ngModel)]="reg.address" name="address" required></ion-input>
+    <ion-input type="text" [(ngModel)]="reg.address" required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="dark">lga</ion-label>
-    <ion-input type="text" [(ngModel)]="reg.lga" name="lga" required></ion-input>
+    <ion-input type="text"  [(ngModel)]="reg.lga"  required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="dark">City</ion-label>
-    <ion-input type="text" [(ngModel)]="reg.city" name="city" required></ion-input>
+    <ion-input type="text"  [(ngModel)]="reg.city"   required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="dark">State</ion-label>
-    <ion-input type="text" [(ngModel)]="reg.state" name="state" required></ion-input>
+    <ion-input type="text"  [(ngModel)]="reg.state" required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="dark">Date Of Birth</ion-label>
-    <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" [(ngModel)]="reg.dob"></ion-datetime>
+    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="reg.dob" pickerFormat="MM/DD/YYYY" ></ion-datetime>
     <!--ion-input type="text" [(ngModel)]="reg.dob" name="dob" required></ion-input-->
   </ion-item>
 
-  <ion-list radio-group [(ngModel)]="reg.gender" name="gender" required>
+  <ion-list radio-group required>
     <ion-list-header>
       Gender
     </ion-list-header>

@@ -22,7 +22,7 @@
     </div>
     <div class="Form">
         <ion-item>
-            <ion-label color="dark"> Transction Amount</ion-label>
+            <ion-label color="dark">Amount to withdraw</ion-label>
             <ion-input type="number" [(ngModel)]="saveRec.transAmount" name="transAmount" required></ion-input>
         </ion-item>
         <button ion-button round outline color="clear" item-end icon-left (click)="DisplayAcctType()">
@@ -31,31 +31,31 @@
         </button>
         <ion-item>
             <ion-label color="dark">Account TYPE</ion-label>
-            <ion-input type="text" [(ngModel)]="displayRec.AccountType" name="AccountType" required></ion-input>
+            <ion-input type="text" [(ngModel)]="displayRec.AccountType" name="AccountType" required disabled></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="dark"> Customer Name</ion-label>
-            <ion-input type="text" [(ngModel)]="displayRec.fullName" name="name"></ion-input>
+            <ion-input type="text" [(ngModel)]="displayRec.fullName" name="name" disabled></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="dark"> Account No</ion-label>
-            <ion-input type="number" [(ngModel)]="displayRec.AccountNumber" name="accountNo"></ion-input>
+            <ion-input type="number" [(ngModel)]="displayRec.AccountNumber" name="accountNo" disabled></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="dark">BVN</ion-label>
-            <ion-input type="text" [(ngModel)]="displayRec.BVN" name="BVN"></ion-input>
+            <ion-input type="text" [(ngModel)]="displayRec.BVN" name="BVN" disabled></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="dark">Account Number</ion-label>
-            <ion-input type="text" [(ngModel)]="displayRec.AccountNumber" name="AccountNumber"></ion-input>
+            <ion-input type="text" [(ngModel)]="displayRec.AccountNumber" name="AccountNumber" disabled></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="dark">Lga</ion-label>
-            <ion-input type="text" [(ngModel)]="displayRec.Lga" name="Lga"></ion-input>
+            <ion-input type="text" [(ngModel)]="displayRec.Lga" name="Lga" disabled></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="dark">Gender</ion-label>
-            <ion-input type="text" [(ngModel)]="displayRec.Gender" name="Gender"></ion-input>
+            <ion-input type="text" [(ngModel)]="displayRec.Gender" name="Gender" disabled></ion-input>
         </ion-item>
         <button ion-button round full color="btnColors" item-end icon-right (click)="saveRecord()">
             Withdraw

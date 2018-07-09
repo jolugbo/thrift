@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>reset</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-item>
+    <ion-label color="danger">User Id </ion-label>
+    <ion-input type="number" [(ngModel)]="resetData.userid" name="userId" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="danger">Email </ion-label>
+    <ion-input type="email" [(ngModel)]="resetData.email" name="emailAdd" required></ion-input>
+  </ion-item>
+  <button ion-button round full color="secondary" outline (click)="resetPassword()">Reset </button>
+  <p class="forgot-password-label">Reset password using valid email</p>
+  <button ion-button round full color="secondary" outline (click)="signIn()">Sign in </button>
+</ion-content>

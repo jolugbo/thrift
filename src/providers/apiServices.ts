@@ -9,11 +9,13 @@ let _API_URL_FOR = {
     Login: "http://www.avantesoft.com/thrift/api/",
     Reg: "http://www.avantesoft.com/thrift/api/",
     AcctType: "http://www.avantesoft.com/thrift/api/getAllAccounts",
+    AcctTypeById: "http://www.avantesoft.com/thrift/api/customer/subaccount/",
     Savings: "http://www.avantesoft.com/thrift/api/customer/savings",
     Withdrawals:"http://www.avantesoft.com/thrift/api/customer/withdrawal",
     PicsPath: "http://www.avantesoft.com/thrift/contents_imgs/customer_imgs",
     Search: "http://www.avantesoft.com/thrift/api/customer/search/",
     AllSavingsRec: "http://www.avantesoft.com/thrift/api/savingtransaction/",
+    forgotPass: "http://www.avantesoft.com/thrift/api/agent/forgotpass",
 }
 @Injectable()
 export class apiServices {
@@ -23,17 +25,18 @@ export class apiServices {
         console.log('Hello api services');
     }
     getAllSavings(agentId) {
-        return new Promise((resolve,reject ) => {
-            let headers = new Headers();
-            let resData: any;
-                this.http.get(_API_URL_FOR.AllSavingsRec +agentId, { headers: headers })
-                    .subscribe(res => {
-                        resolve(res.json());
-                    }, (err) => {
-                        reject(err);
-                        console.log(err);
-                    });
-        });
+        // return new Promise((resolve,reject ) => {
+        //     let headers = new Headers();
+        //     let resData: any;
+        //         this.http.get(_API_URL_FOR.AllSavingsRec +agentId, { headers: headers })
+        //             .subscribe(res => {
+        //                 console.log(res);
+        //                 resolve(res.json());
+        //             }, (err) => {
+        //                 reject(err);
+        //                 console.log(err);
+        //             });
+        // });
     }
     registerUser(userRecord, type) {
         return new Promise((resolve, reject) => {
@@ -96,6 +99,19 @@ export class apiServices {
                 });
         });
     }
+    getAcctTypesById(searchParam) {
+        return new Promise((resolve, reject) => {
+            let headers = new Headers();
+            this.http.get(_API_URL_FOR.AcctTypeById + searchParam,{ headers: headers })
+                .subscribe(res => {
+                    resolve(res.json());
+                    this.acctType = res.json();
+                }, (err) => {
+                    reject(err);
+                    console.log(err);
+                });
+        });
+    }
     searchRec(searchParam) {
         return new Promise((resolve, reject) => {
             let headers = new Headers();
@@ -107,6 +123,18 @@ export class apiServices {
                 })
         });
     }
-
-
+    forgotPass(param){
+        console.log(param);
+        return new Promise((resolve,reject) =>{
+            let headers = new Headers();
+            this.http.post(_API_URL_FOR.forgotPass ,param,{ headers: headers })
+            .subscribe(res =>{
+                resolve(res.json());
+                //console.log(res.json());
+            },(err) =>{
+                reject(err);
+                //console.log(err);
+            })
+        } )
+    }
 }

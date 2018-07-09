@@ -31,10 +31,10 @@ public lineChatType: string = 'line';
 
   constructor(public navCtrl: NavController, private apiService: apiServices, private util: utilServices) {
     this.logPage = 'LoginPage';
-    this.getAllSavings();
+    //this.getAllSavings();
   }
 
-  getAllSavings() {
+ /*getAllSavings() {
     this.util.localGet('AgentDetails').then((response) => {
       let res: any = response;
       //console.log(res);
@@ -42,6 +42,6 @@ public lineChatType: string = 'line';
         this.fiveSavingsTransactions = result;
       });
     });
-  }
+ }*/
 
 }

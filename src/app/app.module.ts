@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
+import { ResetPage } from '../pages/reset/reset';
 import { RegisterPage } from './../pages/register/register';
 import { Savings } from './../pages/savings/savings';
 import { WithdrawalPage } from './../pages/withdrawal/withdrawal';
@@ -33,7 +34,8 @@ export const firebaseConfig = {
     HomePage,
     RegisterPage,
     WithdrawalPage,
-    Savings
+    Savings,
+    ResetPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ export const firebaseConfig = {
     HomePage,
     RegisterPage,
     WithdrawalPage,
-    Savings
+    Savings,ResetPage
   ],
   providers: [
     StatusBar,
