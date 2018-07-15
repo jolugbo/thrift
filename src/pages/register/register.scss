@@ -1,11 +1,16 @@
 page-register {
     ion-content{
-        background-image: url('../assets/imgs/triftBG2.jpg');
+        background-image: url('../assets/imgs/bg_wood.jpg');
         
     }
-  p{
-      color:#ff0000 !important;
+  .scroll-content{
+    background-color: rgba(121, 85, 72, 0.612);
   }
+  .required{
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}
 text-align: center;
 /*ion-input{
     color:color($colors,primary);

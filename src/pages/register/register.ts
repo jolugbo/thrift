@@ -8,6 +8,7 @@ import {utilServices} from '../../providers/util';
 import { Camera, CameraOptions } from "@ionic-native/camera";
 import { FormBuilder,FormGroup,Validators,AbstractControl } from '@angular/forms';
 import { STRING_TYPE } from '@angular/compiler/src/output/output_ast';
+import { LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the RegisterPage page.
@@ -23,6 +24,15 @@ import { STRING_TYPE } from '@angular/compiler/src/output/output_ast';
 })
 export class RegisterPage {
   formgroup:FormGroup;
+  regValidator ={
+    fname:'hidden',
+    phone:'hidden',
+    bvn:'hidden',
+    lname:'hidden',
+    address:'hidden',
+    state:'hidden',
+    dob:'hidden',
+  }
   reg = {
     pics:'',
     phone:'',
@@ -55,32 +65,8 @@ export class RegisterPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public alertCtrl: AlertController,public utils:utilServices, 
               private afAuth: AngularFireAuth,private apiServices:apiServices,
-              private camera:Camera,private formBuilder:FormBuilder) {
+              private camera:Camera,private formBuilder:FormBuilder,public loadingCtrl:LoadingController) {
                 this.getAccTypes();
-                /*this.formgroup = formBuilder.group({
-                  phone:['',Validators.required],
-                  bvn:['',Validators.compose([Validators.required,Validators.minLength(11)])],
-                  fname:['',Validators.required],
-                  lname:['',Validators.required],
-                  mname:['',Validators.required],
-                  email:['',Validators.required],
-                  address:['',Validators.required],
-                  city:['',Validators.required],
-                  state:['',Validators.required],
-                  dob:['',Validators.required],
-                  lga:['',Validators.required],
-                });
-                this.phone = this.formgroup.controls['phone'];
-                this.bvn = this.formgroup.controls['bvn'];
-                this.fname = this.formgroup.controls['fname'];
-                this.lname = this.formgroup.controls['lname'];
-                this.mname = this.formgroup.controls['mname'];
-                this.email = this.formgroup.controls['email'];
-                this.address = this.formgroup.controls['address'];
-                this.city = this.formgroup.controls['city'];
-                this.state = this.formgroup.controls['state'];
-                this.dob = this.formgroup.controls['dob'];
-                this.lga = this.formgroup.controls['lga'];*/
   }
 
   ionViewDidLoad() {
@@ -107,7 +93,46 @@ export class RegisterPage {
     });
   }
 
-  registerAccount(){
+  registerAccount(){ 
+    var loading = this.loadingCtrl.create({
+    content: 'Please wait...'
+  });
+  loading.present();
+  if(this.reg.fname == ""){
+    loading.dismiss();
+    this.regValidator.fname = "visible";
+    return;
+  }
+  if(this.reg.lname == ""){
+    loading.dismiss();
+    this.regValidator.lname = "visible";
+    return;
+  }
+  if(this.reg.bvn == ""){
+    loading.dismiss();
+    this.regValidator.bvn = "visible";
+    return;
+  }
+  if(this.reg.phone == ""){
+    loading.dismiss();
+    this.regValidator.phone = "visible";
+    return;
+  }
+  if(this.reg.dob == ""){
+    loading.dismiss();
+    this.regValidator.dob = "visible";
+    return;
+  }
+  if(this.reg.address == ""){
+    loading.dismiss();
+    this.regValidator.address = "visible";
+    return;
+  }
+  if(this.reg.state == ""){
+    loading.dismiss();
+    this.regValidator.state = "visible";
+    return;
+  }
     //this.reg.phone = this.phone;
     this.apiServices.loginUser(this.reg, 'customer/register').then((result) => {
       this.responseData = result;

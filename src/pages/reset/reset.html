@@ -1,18 +1,24 @@
 <ion-header>
-  <ion-navbar>
+  <!--ion-navbar>
     <ion-title>reset</ion-title>
-  </ion-navbar>
+  </ion-navbar-->
 </ion-header>
 <ion-content padding>
+  <h1 style="margin-top: 10%;">Ensure valid email and ID is supplied</h1>
   <ion-item>
-    <ion-label color="danger">User Id </ion-label>
+    <ion-label color="dark">User Id <span [style.visibility]="visibility1" class="required"> *</span></ion-label>
     <ion-input type="number" [(ngModel)]="resetData.userid" name="userId" required></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label color="danger">Email </ion-label>
+    <ion-label color="dark">Email <span [style.visibility]="visibility2" class="required"> *</span></ion-label>
     <ion-input type="email" [(ngModel)]="resetData.email" name="emailAdd" required></ion-input>
   </ion-item>
-  <button ion-button round full color="secondary" outline (click)="resetPassword()">Reset </button>
-  <p class="forgot-password-label">Reset password using valid email</p>
-  <button ion-button round full color="secondary" outline (click)="signIn()">Sign in </button>
+  <button ion-button block round color="dark" class="button-md-darkButton" (click)="resetPassword()">
+     Reset  &nbsp;&nbsp; <ion-icon name="refresh"></ion-icon> </button>
+  <!--p class="forgot-password-label">Reset password using valid email</p>
+  <button ion-button round full color="secondary" outline (click)="signIn()">Sign in </button-->
+  <button ion-button block round color="dark" class="button-md-darkButton2" (click)="signIn()">
+      <ion-icon name="arrow-round-back"></ion-icon> &nbsp;&nbsp; 
+      back to sign in 
+    </button>
 </ion-content>

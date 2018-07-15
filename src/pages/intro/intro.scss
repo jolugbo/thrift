@@ -1,0 +1,49 @@
+page-intro {
+     background-image: url(../../assets/imgs/bg_wood.jpg);
+    background-repeat: no-repeat;
+    height: 100%; 
+
+    /* Center and scale the image nicely 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;*/
+        background-color: #ff57228f;
+    ion-slides{
+        height: 70%;
+    }
+    .slider-header{
+       /* margin-bottom: -30%;
+        margin-left: -40%;*/   
+        margin-top: 10%;
+    margin-left: -15%;
+    width: 80%;
+    }
+    .model-styler{
+        height: 50%;
+    margin-left: 20%;
+    margin-top: -20%;
+    margin-bottom: -7%;
+    }
+    .lower-intro{
+        text-align: center;
+        margin: auto;
+        width: 80%;
+    }
+    .content-md {
+        color: #fff;
+    }
+    .swiper-pagination-bullet-active {
+        background: #fff;
+      }
+      .button-md-darkButton{
+          color: #488aff;
+          height: 50px;
+          font-size: 25px;
+     font-weight: bolder;
+      }
+      .button-clear-md{
+        font-weight: bolder;
+        font-size: 18px;
+        text-decoration: underline;
+      }
+}

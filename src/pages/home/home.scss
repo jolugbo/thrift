@@ -1,8 +1,7 @@
 page-home {
-    
-    ion-content{
-        background-image: url('../assets/imgs/triftBG2.jpg');
-    }
+.scroll-content{
+    background-color: rgba(23, 14, 1, 0.639);
+}
     ion-card{
         position: relative;
         text-align: center;
@@ -12,7 +11,7 @@ page-home {
         top: 86%;
         font-size: 2.0em;
         width: 100%;
-        font-weight:bold;
+        font-weight:bold; 
         color:#fff;
     }
     .logo{
@@ -41,4 +40,40 @@ page-home {
         font-weight: bolder !important;
         color: #0476bc !important;
     }
+    .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
+        border-color: #000;
+        opacity: 1;
+        color: #fff;
+        font-size: 15px;
+    }
+    .chart-lbls{
+        color: #000;
+        font-weight: bold;
+    }
+    ion-fab[top][edge] {
+        top: -10px;
+        width: 100px;
+    }
+    .fab-in-list.show {
+        opacity: 1;
+        visibility: visible;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        width: 100px;
+    }
+    .fab{
+        border-radius: 30%
+    }
+    .fab-md-in-list {
+        font-size: 20px;
+        background-color: #d5cfca;
+    }
+    .col{
+        font-size: 15px;
+    }
+//     .scroll-content{
+//     margin-top: 56px;
+//     background-color: rgba(255, 235, 59, 0.57);
+//     color: #fff;
+//   }
 }

@@ -1,41 +1,60 @@
 page-login {
 text-align: center;
-p{
-    color: color($colors,dark);
-}
+
 .logo{
     width:30%;
     height:10%;
 }
-.button-inner{
-    color: color($colors,dark);
+.scroll-content{
+    background-color: rgba(9, 19, 122, 0.749)
 }
 ion-toolbar{
-    text-align: center;
+    text-align: center; 
 }
 ion-content{
-    background-image: url('../assets/imgs/triftBG2.jpg');
+    background-image: url('../assets/imgs/bg_wood.jpg');
+}
+.required{
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
 }
 .centered {
-
-    margin-top: 50%;
+    margin-top: 10%;
 }
-.item-md{
-    background-color: transparent;
-    color: color($colors,dark);
+.top-lady{
+    margin-top: 10%;
 }
-.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) 
-.item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) 
-.item-inner{
-    background-color: transparent;
+.top-lady img{
+    margin-bottom: -8%;
 }
-.item-input ion-input, .item-input ion-textarea{
-    background-color: transparent;
-}
+// .item-md{
+//     background-color: transparent;
+//     color: color($colors,dark);
+// }
+// // .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) 
+// // .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) 
+// // .item-inner{
+// //     background-color: transparent;
+// // }
+// .item-input ion-input, .item-input ion-textarea{
+//     background-color: transparent;
+// }
 .btn-forgot{
     font-size: 12px;
     float: right;
     text-transform: lowercase;
     margin-top: -20px;
+    color: #000;
+    font-weight: bold;
+} 
+ .button-md-darkButton{
+    color: #488aff;
+    height: 50px;
+    font-size: 25px;
+    font-weight: bolder;
+    width: 80%;
+    margin: auto;   
+     width: 90%;
 }
 }

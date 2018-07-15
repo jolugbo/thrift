@@ -9,28 +9,33 @@
   </ion-toolbar -->
 </ion-header>
 <ion-content>
-  <div>
-    <img src="assets/imgs/logo.png" class="logo" />
-    <h1>Alajo Shomolu</h1></div>
+  <div class="top-lady">
+    <img src="assets/imgs/Lady.png" class="logo" />
+    <h1>QUIKKY</h1>
+  </div>
   <div class="centered">
     <ion-item>
-      <ion-label color="dark">Agent ID</ion-label>
-      <ion-input type="text" [(ngModel)]="loginData.agentid" name="agentId" required></ion-input>
+      <ion-label color="dark">Agent ID <span [style.visibility]="visibility1" class="required"> *</span></ion-label>
+      <ion-input type="number" [(ngModel)]="loginData.agentid" name="agentId" required></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="dark">Password</ion-label>
+      <ion-label color="dark">Password <span [style.visibility]="visibility2" class="required"> *</span></ion-label>
       <ion-input type="password" [(ngModel)]="loginData.password" name="password" required></ion-input>
     </ion-item>
     <p><button ion-button clear  class="btn-forgot" (click)="passwordReset()">forgot password?</button>
     </p>
-    <button ion-button round full outline color="btnColors" (click)="signIn()">Sign in &nbsp;&nbsp;
+    <!--button ion-button round full outline color="btnColors" (click)="signIn()">Sign in &nbsp;&nbsp;
+      <ion-icon name="md-log-in"></ion-icon>
+    </button-->
+    <button ion-button block round color="dark" class="button-md-darkButton" (click)="signIn()">
+      Sign in &nbsp;&nbsp;
       <ion-icon name="md-log-in"></ion-icon>
     </button>
   </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar >
-    <ion-title class="footer-bg">Avante-cs &copy; 2018</ion-title>
+    <ion-title class="footer-bg">ARM &copy; 2018</ion-title>
   </ion-toolbar>
 </ion-footer>

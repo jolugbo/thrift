@@ -57,14 +57,8 @@
             <ion-label color="dark">Gender</ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.Gender" name="Gender" disabled></ion-input>
         </ion-item>
-        <button ion-button round full color="btnColors" item-end icon-right (click)="saveRecord()">
-            Withdraw
-            <ion-icon name="md-add"></ion-icon>
-        </button>
+        <button ion-button block round color="dark" class="button-md-darkButton" (click)="saveRecord()">
+                Withdraw &nbsp; &nbsp;
+            <ion-icon name="md-add"></ion-icon></button>
     </div>
 </ion-content>
-<ion-footer>
-    <ion-toolbar>
-        <ion-title class="footer-bg">Avante-cs &copy; 2018</ion-title>
-    </ion-toolbar>
-</ion-footer>

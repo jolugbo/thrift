@@ -50,23 +50,21 @@ $colors: (
 );
 
 .picker-md .picker-wrapper{
-  border-top: 2px solid #3d2323 !important;
-  border-right: 2px solid #b8b8b8 !important;
-  background: #1d83b1 !important;
-  border-radius: 25px !important; 
+  border-top: 2px solid #000!important;
+    border-right: 2px solid #000 !important;
+    background: #88542e !important;
+    border-radius: 25px !important;
 }
 .picker-wrapper{
   top: 10px !important;
   width: 60% !important;
 }
-.button-inner{
-  color: black;
-}
-ion-label{
-  color: black;
-}
-.item-input ion-label{
-  font-size: 12px;
+.toolbar-title-md {
+  padding: 0 12px;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #fff;
+
 }
 // App iOS Variables
 // --------------------------------------------------
@@ -103,6 +101,13 @@ ion-label{
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
 // http://ionicframework.com/docs/ionicons/
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
 
 @import "ionic.ionicons";
 
@@ -112,6 +117,4 @@ ion-label{
 
 @import "roboto";
 @import "noto-sans";
-$font-family-md-base: "Montserrat-Regular";
-$font-family-ios-base: "Montserrat-Regular";
-$font-family-wp-base: "Montserrat-Regular";
+

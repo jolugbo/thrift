@@ -1,6 +1,22 @@
 page-reset {
 
     ion-content{
-        background-image: url('../assets/imgs/triftBG2.jpg');
+        background-image: url('../../assets/imgs/bg_wood.jpg');
+    }
+    
+.scroll-content{
+    background-color: hsla(235, 85%, 26%, 0.749)
+}
+    .button-md-darkButton{
+        color: #488aff;
+    } 
+    .button-md-darkButton2{
+        color: #488aff;
+        margin-top: 60%;
+    }
+    .required{
+        font-size: 20px;
+        font-weight: bold;
+        color: red;
     }
 }

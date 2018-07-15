@@ -15,15 +15,24 @@
 
 
 <ion-content>
-
+    <!--ion-fab top left edge>
+        <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+        <ion-fab-list>
+          <button ion-fab>Home</button>
+          <button ion-fab>Register</button>
+          <button ion-fab>Savings</button>
+          <button ion-fab>Withdrawal</button>
+          <button ion-fab>Logout</button>
+        </ion-fab-list>
+      </ion-fab-->
 
   <div padding>
     <ion-segment [(ngModel)]="viewType">
       <ion-segment-button value="Personal">
-        Personal Records
+        Charts
       </ion-segment-button>
       <ion-segment-button value="Group">
-        Group Records
+        Transactions
       </ion-segment-button>
     </ion-segment>
   </div>
@@ -31,12 +40,14 @@
   <div [ngSwitch]="viewType">
     <ion-list *ngSwitchCase="'Personal'">
       <ion-item>
+        <h1 class="chart-lbls">Daily Sales Chart</h1>
         <div style="display:block;">
           <canvas baseChart [data]='doughnutChartData' [labels]='doughnutChartLabel' [chartType]='doughnutChatType'>
           </canvas>
         </div>
       </ion-item>
       <ion-item>
+          <h1 class="chart-lbls">Monthly Sales Trend</h1>
         <div style="display:block;">
           <canvas baseChart [data]='lineChartData' [labels]='lineChartLabel' [chartType]='lineChatType'>
           </canvas>
@@ -68,6 +79,43 @@
     <ion-list *ngSwitchCase="'Group'">
       <ion-item>
         <h2>Group</h2>
+      </ion-item>
+      <ion-item>
+          <ion-grid>
+              <ion-row>
+                <ion-col>
+                   Name &nbsp; <ion-icon name="people"></ion-icon>
+                </ion-col>
+                <ion-col>
+                  Type &nbsp;<ion-icon name="options"></ion-icon>
+                </ion-col>
+                <ion-col>
+                  Amount &nbsp;<ion-icon name="cash"></ion-icon>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  Akin
+                </ion-col>
+                <ion-col>
+                  Deposit
+                </ion-col>
+                <ion-col >
+                  10000
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  Shola
+                </ion-col>
+                <ion-col>
+                  Withdraw
+                </ion-col>
+                <ion-col >
+                  50000
+                </ion-col>
+              </ion-row>
+            </ion-grid>
       </ion-item>
     </ion-list>
   </div>
