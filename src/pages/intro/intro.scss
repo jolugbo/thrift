@@ -1,13 +1,10 @@
 page-intro {
-     background-image: url(../../assets/imgs/bg_wood.jpg);
-    background-repeat: no-repeat;
-    height: 100%; 
-
+     background-image: url('../assets/imgs/bg_wood.jpg');
     /* Center and scale the image nicely 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;*/
-        background-color: #ff57228f;
+        background-color: rgba(255, 87, 34, 0.561);
     ion-slides{
         height: 70%;
     }
