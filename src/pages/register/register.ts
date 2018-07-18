@@ -99,37 +99,50 @@ export class RegisterPage {
   });
   loading.present();
   if(this.reg.fname == ""){
-    loading.dismiss();
+    loading.dismiss(); 
+    this.utils.presentAlert('Form Error!', 'first name required ');
     this.regValidator.fname = "visible";
     return;
   }
   if(this.reg.lname == ""){
     loading.dismiss();
+    this.utils.presentAlert('Form Error!', 'last name required ');
     this.regValidator.lname = "visible";
     return;
   }
   if(this.reg.bvn == ""){
     loading.dismiss();
+    this.utils.presentAlert('Form Error!', 'BVN required ');
+    this.regValidator.bvn = "visible";
+    return;
+  } 
+   if(this.reg.bvn.length !== 11){
+    loading.dismiss();
+    this.utils.presentAlert('Form Error!', 'BVN must be 11 digit ');
     this.regValidator.bvn = "visible";
     return;
   }
   if(this.reg.phone == ""){
     loading.dismiss();
+    this.utils.presentAlert('Form Error!', 'phone no required ');
     this.regValidator.phone = "visible";
     return;
   }
   if(this.reg.dob == ""){
     loading.dismiss();
+    this.utils.presentAlert('Form Error!', 'DOB required ');
     this.regValidator.dob = "visible";
     return;
   }
   if(this.reg.address == ""){
     loading.dismiss();
+    this.utils.presentAlert('Form Error!', 'address required ');
     this.regValidator.address = "visible";
     return;
   }
   if(this.reg.state == ""){
     loading.dismiss();
+    this.utils.presentAlert('Form Error!', 'state required ');
     this.regValidator.state = "visible";
     return;
   }
