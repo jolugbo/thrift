@@ -33,5 +33,7 @@ export class IntroPage {
     this.navCtrl.setRoot(LoginPage);
   }
   regModal() {
+    // const regPopUpPage: Modal = this.modal.create(RegistrationPage);
+    // regPopUpPage.present();
   }
 }

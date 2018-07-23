@@ -35,9 +35,9 @@ export class MenuPage {
 
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Customer Registration', component: RegisterPage },
-      { title: 'Customer Savings', component: Savings },
-      { title: 'Customer Withdrawals', component: WithdrawalPage },
+      { title: 'Register', component: RegisterPage },
+      { title: 'Savings', component: Savings },
+      { title: 'Withdrawals', component: WithdrawalPage },
       { title: 'Logout ', component: LoginPage },
     ];
   }

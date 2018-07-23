@@ -48,7 +48,12 @@ $colors: (
   clear:       #fff,
   btnColors: #3098de,
 );
-
+.picker-md .picker-opt {
+  color: #fff !important;
+}
+.picker-md .picker-opt.picker-opt-selected {
+  color: #5F6062 !important;
+}
 .picker-md .picker-wrapper{
   border-top: 2px solid #000!important;
     border-right: 2px solid #000 !important;
@@ -58,6 +63,9 @@ $colors: (
 .picker-wrapper{
   top: 10px !important;
   width: 60% !important;
+}
+.picker-md .picker-button, .picker-md .picker-button.activated {
+   color: #fff !important;
 }
 .toolbar-title-md {
   padding: 0 12px;

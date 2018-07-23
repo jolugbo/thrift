@@ -19,7 +19,10 @@ import { apiServices } from '../providers/apiServices';
 import { utilServices } from '../providers/util';
 import { IonicStorageModule } from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import {ChartsModule} from 'ng2-charts'
+import {ChartsModule} from 'ng2-charts';
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCiwQSBm2B9MvUCbh6LwoQiq-SfbEe54AQ",
@@ -59,10 +62,13 @@ export const firebaseConfig = {
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen, 
+    File,
+    Transfer,
+    Camera,
+    FilePath,
     apiServices,
     utilServices,
-    Camera,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
