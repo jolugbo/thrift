@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { apiServices } from '../../providers/apiServices';
 import { utilServices } from '../../providers/util';
-import { Modal, ModalController } from 'ionic-angular';
+import { Modal, ModalController,IonicPage,LoadingController } from 'ionic-angular';
 
 
+@IonicPage()
 @Component({
     selector: 'page-savings',
     templateUrl: 'savings.html'
@@ -27,7 +28,13 @@ export class Savings {
         Lga: '',
         Gender: '',
     }
-    constructor(private apiService: apiServices, private modal: ModalController,
+    saveValidator ={
+        customerId:'hidden',
+        transAmount:'hidden',
+        accountId:'hidden',
+        agentId:'hidden',
+      }
+    constructor(private apiService: apiServices, private modal: ModalController,public loadingCtrl:LoadingController, 
         private utils: utilServices) {
             this.accountTypes = this.utils.localGet("AccountTypes");
             console.log(this.accountTypes);
@@ -40,6 +47,30 @@ export class Savings {
 
     }
     saveRecord() {
+            var loading = this.loadingCtrl.create({
+            content: 'Please wait...'
+          });
+        
+          loading.present();
+        
+          if(this.displayRec.fullName == ""){
+            loading.dismiss(); 
+            this.utils.presentAlert('Form Error!', 'name required please use the search');
+            this.saveValidator.accountId = "visible";
+            return;
+          }
+          if(this.saveRec.transAmount == ""){
+            loading.dismiss(); 
+            this.utils.presentAlert('Form Error!', 'amount required ');
+            this.saveValidator.transAmount = "visible";
+            return;
+          }
+          if(this.saveRec.accountId == ""){
+            loading.dismiss(); 
+            this.utils.presentAlert('Form Error!', 'account type required ');
+            this.saveValidator.accountId = "visible";
+            return;
+          }
         this.utils.localGet('AgentDetails').then((result) => {
             this.responseData = result;
             this.saveRec.agentId = this.responseData.id;

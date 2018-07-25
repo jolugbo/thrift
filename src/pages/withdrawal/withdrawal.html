@@ -8,21 +8,19 @@
 </ion-header>
 
 <ion-content>
-    <div class="search">
-        <!--(focusout)="searchRecord()"-->
+    <!--(focusout)="searchRecord()"-->
+    <div style="background-color: rgba(23, 14, 1, 0.639);">
+    <ion-item>
+        <ion-label color="clear"> Search(Name)</ion-label>
+        <ion-input type="text" [(ngModel)]="searchParam" name="searchParam" required>
+        </ion-input>
+    </ion-item>
+    <button ion-button round outline color="clear" item-end icon-left (click)="searchRecord()">
+        <ion-icon name="md-search"></ion-icon>
+        Search
+    </button>
         <ion-item>
-            <ion-label color="dark"> Search(Name/AcctNo/BVN)</ion-label>
-            <ion-input type="text" [(ngModel)]="searchParam" name="searchParam" required>
-            </ion-input>
-        </ion-item>
-        <button ion-button round outline color="clear" item-end icon-left (click)="searchRecord()">
-            <ion-icon name="md-search"></ion-icon>
-            Search
-        </button>
-    </div>
-    <div class="Form">
-        <ion-item>
-            <ion-label color="dark">Amount to withdraw</ion-label>
+            <ion-label color="clear">Amount to withdraw</ion-label>
             <ion-input type="number" [(ngModel)]="saveRec.transAmount" name="transAmount" required></ion-input>
         </ion-item>
         <button ion-button round outline color="clear" item-end icon-left (click)="DisplayAcctType()">
@@ -30,35 +28,36 @@
             Select Account Type
         </button>
         <ion-item>
-            <ion-label color="dark">Account TYPE</ion-label>
+            <ion-label color="clear">Account TYPE</ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.AccountType" name="AccountType" required disabled></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label color="dark"> Customer Name</ion-label>
+            <ion-label color="clear"> Customer Name</ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.fullName" name="name" disabled></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label color="dark"> Account No</ion-label>
+            <ion-label color="clear"> Account No</ion-label>
             <ion-input type="number" [(ngModel)]="displayRec.AccountNumber" name="accountNo" disabled></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label color="dark">BVN</ion-label>
+            <ion-label color="clear">BVN</ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.BVN" name="BVN" disabled></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label color="dark">Account Number</ion-label>
+            <ion-label color="clear">Account Number</ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.AccountNumber" name="AccountNumber" disabled></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label color="dark">Lga</ion-label>
+            <ion-label color="clear">Lga</ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.Lga" name="Lga" disabled></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label color="dark">Gender</ion-label>
+            <ion-label color="clear">Gender</ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.Gender" name="Gender" disabled></ion-input>
         </ion-item>
         <button ion-button block round color="dark" class="button-md-darkButton" (click)="saveRecord()">
-                Withdraw &nbsp; &nbsp;
-            <ion-icon name="md-add"></ion-icon></button>
+            Withdraw &nbsp; &nbsp;
+            <ion-icon name="md-add"></ion-icon>
+        </button>
     </div>
 </ion-content>

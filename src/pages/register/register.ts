@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController , ActionSheetController, ToastController, Platform, LoadingController, Loading} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController , ActionSheetController, ToastController,Modal, Platform, LoadingController, Loading, ModalController} from 'ionic-angular';
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import {apiServices} from '../../providers/apiServices';
@@ -36,12 +36,16 @@ export class RegisterPage {
     address:'hidden',
     state:'hidden',
     dob:'hidden',
+    accounttype:'hidden',
+  }
+  displayRec={
+    AccountType :''
   }
   reg = {
-    pics:'',phone:'',bvn:'',fname:'',lname:'',mname:'',email:'',address:'',city:'',state:'',dob:'',gender:'',lga:'',
+    pics:'',phone:'',bvn:'',fname:'',accounttype:'',lname:'',mname:'',email:'',address:'',city:'',state:'',dob:'',gender:'',lga:'',
   }
   responseData:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController, public navParams: NavParams, private modal: ModalController,
               public alertCtrl: AlertController,public utils:utilServices, 
               private afAuth: AngularFireAuth,private apiServices:apiServices,
               private camera:Camera,public loadingCtrl:LoadingController, 
@@ -108,6 +112,13 @@ export class RegisterPage {
     this.regValidator.bvn = "visible";
     return;
   }
+  
+  if(this.reg.accounttype == ""){
+    loading.dismiss();
+    this.utils.presentAlert('Form Error!', 'Account Type required ');
+    this.regValidator.accounttype = "visible";
+    return;
+  }
   if(this.reg.phone == ""){
     loading.dismiss();
     this.utils.presentAlert('Form Error!', 'phone no required ');
@@ -136,12 +147,13 @@ export class RegisterPage {
     this.apiServices.loginUser(this.reg, 'customer/register').then((result) => {
       this.responseData = result;
       if (!this.responseData.error) {
+        loading.dismiss();
         console.log(this.responseData);
         // this.userRecord = this.responseData;
         // this.userRecord.token = this.generateToken();
          this.utils.localSave('AgentDetails',this.reg);
          this.utils.presentAlert('Success!',this.responseData.message);
-         this.reg = {pics:'',phone:'',bvn:'',fname:'',lname:'',mname:'',email:'',address:'',city:'',state:'',dob:'',gender:'', lga:''};
+         this.reg = {pics:'',phone:'',bvn:'',fname:'',accounttype:'',lname:'',mname:'',email:'',address:'',city:'',state:'',dob:'',gender:'', lga:''};
         // this.navCtrl.setRoot(this.HomePage); 
       }
       else {
@@ -151,7 +163,36 @@ export class RegisterPage {
       console.error(err);
     })
   }
-
+  DisplayAcctType(){
+    // this.apiService.getAcctTypesById(this.saveRec.customerId).then((res) => {
+    //       console.log(res);
+    //       const AccountTypesPage: Modal = this.modal.create("AcctTypePage", { data: res });
+    //       AccountTypesPage.present();
+    //       AccountTypesPage.onDidDismiss((data) => {
+    //           if (data) {
+    //               this.saveRec.accountId = data.sn;
+    //               this.displayRec.AccountType = data.account_name;
+    //               this.displayRec.AccountNumber=  data.account_num
+    //           }
+    //           else
+    //           this.utils.presentAlert("No Data","No Account Type Selected");
+    //       });
+    //     });
+    //     /*
+         this.utils.localGet("AccountTypes").then((result) => {
+          const AccountTypesPage: Modal = this.modal.create("AcctTypePage", { data: result });
+          AccountTypesPage.present();
+          AccountTypesPage.onDidDismiss((data) => {
+              if (data) {
+                console.log(data);
+                  this.reg.accounttype = data.sn;
+                  this.displayRec.AccountType = data.account_name;
+              }
+              else
+              this.utils.presentAlert("No Data","No Account Type Selected");
+          });
+      });
+  }
   // takePhoto() {
   //   const options: CameraOptions = {
   //       quality: 50,

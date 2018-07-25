@@ -7,21 +7,21 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
-    <div class="search">
-        <!--(focusout)="searchRecord()"/AcctNo/BVN)-->
+    <div style="background-color: rgba(23, 14, 1, 0.639);">
+    <!--(focusout)="searchRecord()"/AcctNo/BVN)-->
+    <ion-item>
+        <ion-label color="clear"> Search(Name)</ion-label>
+        <ion-input type="text" [(ngModel)]="searchParam" name="searchParam" required>
+        </ion-input>
+    </ion-item>
+    <button ion-button round outline color="clear" class="srch-btn" item-end icon-left (click)="searchRecord()">
+        <ion-icon name="md-search"></ion-icon>
+        Search
+    </button>
         <ion-item>
-            <ion-label color="clear"> Search(Name)</ion-label>
-            <ion-input type="text" [(ngModel)]="searchParam" name="searchParam" required>
-            </ion-input>
-        </ion-item>
-        <button ion-button round outline color="clear" item-end icon-left (click)="searchRecord()">
-            <ion-icon name="md-search"></ion-icon>
-            Search
-        </button>
-    </div>
-    <div class="Form">
-        <ion-item>
-            <ion-label color="clear">Amount to save</ion-label>
+            <ion-label color="clear">Amount to save
+                <span [style.visibility]="saveValidator.transAmount" class="required"> *</span>
+            </ion-label>
             <ion-input type="number" [(ngModel)]="saveRec.transAmount" name="transAmount" required></ion-input>
         </ion-item>
         <button ion-button round outline color="clear" item-end icon-left (click)="DisplayAcctType()">
@@ -29,11 +29,11 @@
             Select Account Type
         </button>
         <ion-item>
-            <ion-label color="clear">Account TYPE</ion-label>
+            <ion-label color="clear">Account TYPE<span [style.visibility]="saveValidator.accountId" class="required"> *</span></ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.AccountType" name="AccountType" required disabled></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label color="clear"> Customer Name</ion-label>
+            <ion-label color="clear"> Customer Name <span [style.visibility]="saveValidator.accountId" class="required"> *</span></ion-label>
             <ion-input type="text" [(ngModel)]="displayRec.fullName" name="name" disabled></ion-input>
         </ion-item>
         <ion-item>
@@ -60,7 +60,5 @@
             Save &nbsp; &nbsp;
             <ion-icon name="md-add"></ion-icon>
         </button>
-    </div>
+        </div>
 </ion-content>
-<!--`customerId`, `agentId`, `accountNo`, `transAmount`,
-               `accountType`, `accountCode`,-->

@@ -45,7 +45,14 @@
     <ion-label color="clear">BVN<span [style.visibility]="regValidator.bvn" class="required"> *</span></ion-label>
     <ion-input type="number"  [(ngModel)]="reg.bvn"  required></ion-input>
   </ion-item>
-
+  <button ion-button round outline color="clear" item-end icon-left (click)="DisplayAcctType()">
+    <ion-icon name="md-options"></ion-icon>
+    Account Type
+</button>
+<ion-item>
+    <ion-label color="clear">Account TYPE<span [style.visibility]="regValidator.accounttype" class="required"> *</span></ion-label>
+    <ion-input type="text" [(ngModel)]="this.displayRec.AccountType" name="AccountType" required disabled></ion-input>
+</ion-item>
   <ion-item>
     <ion-label color="clear">Email</ion-label>
     <ion-input type="email" [(ngModel)]="reg.email"  required></ion-input>

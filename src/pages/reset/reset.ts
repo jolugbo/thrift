@@ -12,7 +12,7 @@ import { LoadingController } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-reset',
   templateUrl: 'reset.html',

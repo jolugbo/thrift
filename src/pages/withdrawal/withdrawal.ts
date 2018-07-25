@@ -36,6 +36,12 @@ export class WithdrawalPage {
       Lga: '',
       Gender: '',
   }
+  saveValidator ={
+    customerId:'hidden',
+    transAmount:'hidden',
+    accountId:'hidden',
+    agentId:'hidden',
+  }
   constructor(private apiService: apiServices, private modal: ModalController,
       private utils: utilServices) {
           this.accountTypes = this.utils.localGet("AccountTypes");
