@@ -3,6 +3,7 @@ import { LoginPage } from './../login/login';
 import { HomePage } from './../home/home';
 import { Savings } from '../savings/savings';
 import { WithdrawalPage } from '../withdrawal/withdrawal';
+import { SearchCustomerPage } from '../search-customer/search-customer';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Nav, Platform } from 'ionic-angular';
 
@@ -38,6 +39,7 @@ export class MenuPage {
       { title: 'Register', component: RegisterPage },
       { title: 'Savings', component: Savings },
       { title: 'Withdrawals', component: WithdrawalPage },
+      { title: 'Customers', component: SearchCustomerPage },
       { title: 'Logout ', component: LoginPage },
     ];
   }

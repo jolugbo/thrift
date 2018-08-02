@@ -26,8 +26,8 @@ export class LoginPage {
     agentid: '',
     password: ''
   }
-  visibility1 = "hidden";
-  visibility2 = "hidden";
+  visibility1 = "visible";
+  visibility2 = "visible";
   userRecord = {
     id: '',
     email: '',
@@ -58,6 +58,28 @@ export class LoginPage {
       }
     });
   }
+  validate(ev) {
+    //console.log(ev.target.value);
+    console.log(ev.srcElement.name);
+    console.log(ev.target.value.length);
+    if (ev.srcElement.name === "agentId") {
+      if (ev.target.value.length <  1) {
+        this.visibility1 = "visible";
+      }
+      else{
+        console.log('no got here');
+        this.visibility1 = "hidden";
+      }
+    }
+    else if(ev.srcElement.name == 'password'){
+      if (ev.target.value.length <  1) {
+        this.visibility1 = "visible";
+      }
+      else{
+        this.visibility2 = "hidden";
+      }
+    }
+  }
   signIn() {
    var loading = this.loadingCtrl.create({
       content: 'Please wait...'
@@ -65,7 +87,7 @@ export class LoginPage {
     loading.present();
     if(this.loginData.agentid == ""){
       loading.dismiss();
-      this.visibility1 = "visible";
+      this.visibility1 = "visible";//hidden
       return;
     }
     if(this.loginData.password == ""){
@@ -87,7 +109,7 @@ export class LoginPage {
           this.utils.localSave('AccountTypes', res);
         });
         loading.dismiss();
-        this.utils.presentAlert('Login Successful!', 'Welcome ' + this.responseData.firstname);
+        this.utils.presentAlert('Login Successful!', '<br/>Welcome ' + this.responseData.firstname);
         this.navCtrl.setRoot(this.HomePage);
       }
       else {
@@ -96,7 +118,7 @@ export class LoginPage {
       }
     }, (err) => {
       loading.dismiss();
-      this.utils.presentAlert('Login Error!', err);
+      this.utils.presentAlert('Login Error!', 'Please check your internet connection');
       console.error(err);
     })
   }

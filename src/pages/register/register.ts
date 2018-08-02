@@ -29,14 +29,15 @@ export class RegisterPage {
   lastImage: string = null;
   loading: Loading;
   regValidator ={
-    fname:'hidden',
-    phone:'hidden',
-    bvn:'hidden',
-    lname:'hidden',
-    address:'hidden',
-    state:'hidden',
-    dob:'hidden',
-    accounttype:'hidden',
+    fname:'visible',//hidden
+    phone:'visible',
+    bvn:'visible',
+    lname:'visible',
+    address:'visible',
+    lga:'visible',
+    state:'visible',
+    dob:'visible',
+    accounttype:'visible',
   }
   displayRec={
     AccountType :''
@@ -55,13 +56,89 @@ export class RegisterPage {
                 this.getAccTypes();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+  validate(ev) {
+    //console.log(ev.target.value);
+    if (ev.srcElement.name === "fname") {
+      if (ev.target.value.length <  1) {
+        this.regValidator.fname = "visible";
+      }
+      else{
+        this.regValidator.fname = "hidden";
+      }
+    }
+    else if(ev.srcElement.name == 'lname'){
+      if (ev.target.value.length <  1) {
+        this.regValidator.lname = "visible";
+      }
+      else{
+        this.regValidator.lname = "hidden";
+      }
+    }
+    else if(ev.srcElement.name == 'phone'){
+      if (ev.target.value.length <  1) {
+        this.regValidator.phone = "visible";
+      }
+      else{
+        this.regValidator.phone = "hidden";
+      }
+    }
+    else if(ev.srcElement.name == 'bvn'){
+      if (ev.target.value.length <  1) {
+        this.regValidator.bvn = "visible";
+      }
+      else{
+        this.regValidator.bvn = "hidden";
+      }
+    }
+    else if(ev.srcElement.name == 'accounttype'){
+      if (ev.target.value.length <  1) {
+        this.regValidator.accounttype = "visible";
+      }
+      else{
+        this.regValidator.accounttype = "hidden";
+      }
+    }
+    else if(ev.srcElement.name == 'address'){
+      if (ev.target.value.length <  1) {
+        this.regValidator.address = "visible";
+      }
+      else{
+        this.regValidator.address = "hidden";
+      }
+    }
+    else if(ev.srcElement.name == 'lga'){
+      if (ev.target.value.length <  1) {
+        this.regValidator.lga = "visible";
+      }
+      else{
+        this.regValidator.lga = "hidden";
+      }
+    }
+    else if(ev.srcElement.name == 'State'){
+      if (ev.target.value.length <  1) {
+        this.regValidator.state = "visible";
+      }
+      else{
+        this.regValidator.state = "hidden";
+      }
+    }
+    else if(ev.srcElement.name == 'State'){
+      if (ev.target.value.length <  1) {
+        this.regValidator.state = "visible";
+      }
+      else{
+        this.regValidator.state = "hidden";
+      }
+    }
+    else if(ev.srcElement.name == 'dob'){
+      if (ev.target.value.length <  1) {
+        this.regValidator.dob = "visible";
+      }
+      else{
+        this.regValidator.dob = "hidden";
+      }
+    }
   }
-
-  lunchCam(){
-    this.utils.cameraAction();
-  } 
 
   displayAlert(alertTitle,alertSub){
     let theAlert = this.alertCtrl.create({
@@ -307,7 +384,7 @@ public pathForImage(img) {
 }
 public uploadImage() {
   // Destination URL
-  var url = "http://yoururl/upload.php";
+  var url = "http://www.avantesoft.com/thrift/contents_imgs/customer_imgs"; 
  
   // File for Upload
   var targetPath = this.pathForImage(this.lastImage);

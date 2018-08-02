@@ -4,7 +4,7 @@ import { utilServices } from '../../providers/util';
 import { Modal, ModalController,IonicPage,LoadingController } from 'ionic-angular';
 
 
-@IonicPage()
+//@IonicPage()
 @Component({
     selector: 'page-savings',
     templateUrl: 'savings.html'

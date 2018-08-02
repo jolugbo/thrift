@@ -16,6 +16,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { HttpModule } from '@angular/http';
 import { apiServices } from '../providers/apiServices';
+import { SearchCustomerPage } from '../pages/search-customer/search-customer';
 import { utilServices } from '../providers/util';
 import { IonicStorageModule } from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -38,6 +39,7 @@ export const firebaseConfig = {
     HomePage,
     RegisterPage,
     WithdrawalPage,
+    SearchCustomerPage,
     Savings,
     ResetPage,
     IntroPage
@@ -58,6 +60,7 @@ export const firebaseConfig = {
     HomePage,
     RegisterPage,
     WithdrawalPage,
+    SearchCustomerPage,
     Savings,ResetPage,IntroPage
   ],
   providers: [

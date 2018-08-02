@@ -16,12 +16,12 @@
   <div class="centered">
     <ion-item>
       <ion-label color="dark">User ID <span [style.visibility]="visibility1" class="required"> *</span></ion-label>
-      <ion-input type="number" [(ngModel)]="loginData.agentid" name="agentId" required></ion-input>
+      <ion-input type="number" [(ngModel)]="loginData.agentid" name="agentId" (keyup)="validate($event)" ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="dark">Password <span [style.visibility]="visibility2" class="required"> *</span></ion-label>
-      <ion-input type="password" [(ngModel)]="loginData.password" name="password" required></ion-input>
+      <ion-input type="password" [(ngModel)]="loginData.password" name="password" (keyup)="validate($event)" ></ion-input>
     </ion-item>
     <p><button ion-button clear  class="btn-forgot" (click)="passwordReset()">forgot password?</button>
     </p>
@@ -36,9 +36,6 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar >
-    <ion-title class="footer-bg">Company Name &copy; 2018</ion-title>
+    <ion-title class="footer-bg">Avante-CS &copy; 2018</ion-title>
   </ion-toolbar>
 </ion-footer>
-kehide ade
-pa
-

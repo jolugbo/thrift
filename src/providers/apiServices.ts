@@ -16,6 +16,7 @@ let _API_URL_FOR = {
     Search: "http://www.avantesoft.com/thrift/api/customer/search/",
     AllSavingsRec: "http://www.avantesoft.com/thrift/api/savingtransaction/",
     forgotPass: "http://www.avantesoft.com/thrift/api/agent/forgotpass",
+    allCustomers: "http://www.avantesoft.com/thrift/api/viewAllCustomers",
 }
 @Injectable()
 export class apiServices {
@@ -93,6 +94,31 @@ export class apiServices {
                 .subscribe(res => {
                     resolve(res.json());
                     this.acctType = res.json();
+                }, (err) => {
+                    reject(err);
+                    console.log(err);
+                });
+        });
+    }
+    getAllCustomers() {
+        return new Promise((resolve, reject) => {
+            let headers = new Headers();
+            this.http.get(_API_URL_FOR.allCustomers, { headers: headers })
+                .subscribe(res => {
+                    resolve(res.json());
+                }, (err) => {
+                    reject(err);
+                    console.log(err);
+                });
+        });
+    }
+    getCustomerById(searchParam) {
+        return new Promise((resolve, reject) => {
+            let headers = new Headers();
+            this.http.get(_API_URL_FOR.Search + searchParam,{ headers: headers })
+                .subscribe(res => {
+                    resolve(res.json());
+                    console.log(res.json());
                 }, (err) => {
                     reject(err);
                     console.log(err);

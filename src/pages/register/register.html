@@ -24,7 +24,7 @@
 
   <ion-item>
       <ion-label color="clear">First Name<span [style.visibility]="regValidator.fname" class="required"> *</span></ion-label>
-      <ion-input type="text"  [(ngModel)]="reg.fname"  required></ion-input>
+      <ion-input type="text"  [(ngModel)]="reg.fname"  name="fname" (keyup)="validate($event)" ></ion-input>
     </ion-item>
   
     <ion-item>
@@ -34,16 +34,16 @@
   
     <ion-item>
       <ion-label color="clear">Last Name<span [style.visibility]="regValidator.lname" class="required"> *</span></ion-label>
-      <ion-input type="text"  [(ngModel)]="reg.lname"  required></ion-input>
+      <ion-input type="text"  [(ngModel)]="reg.lname"  name="lname"   (keyup)="validate($event)" ></ion-input>
     </ion-item>
   <ion-item>
     <ion-label color="clear">Phone Number<span [style.visibility]="regValidator.phone" class="required"> *</span></ion-label>
-    <ion-input type="number"  [(ngModel)]="reg.phone" required></ion-input>
+    <ion-input type="number"  [(ngModel)]="reg.phone" name="phone" (keyup)="validate($event)" ></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="clear">BVN<span [style.visibility]="regValidator.bvn" class="required"> *</span></ion-label>
-    <ion-input type="number"  [(ngModel)]="reg.bvn"  required></ion-input>
+    <ion-input type="number"  [(ngModel)]="reg.bvn"  name="bvn" (keyup)="validate($event)"></ion-input>
   </ion-item>
   <button ion-button round outline color="clear" item-end icon-left (click)="DisplayAcctType()">
     <ion-icon name="md-options"></ion-icon>
@@ -51,7 +51,7 @@
 </button>
 <ion-item>
     <ion-label color="clear">Account TYPE<span [style.visibility]="regValidator.accounttype" class="required"> *</span></ion-label>
-    <ion-input type="text" [(ngModel)]="this.displayRec.AccountType" name="AccountType" required disabled></ion-input>
+    <ion-input type="text" [(ngModel)]="this.displayRec.AccountType" name="AccountType" (keyup)="validate($event)" disabled></ion-input>
 </ion-item>
   <ion-item>
     <ion-label color="clear">Email</ion-label>
@@ -60,27 +60,27 @@
 
   <ion-item>
     <ion-label color="clear">Address<span [style.visibility]="regValidator.address" class="required"> *</span></ion-label>
-    <ion-input type="text" [(ngModel)]="reg.address" required></ion-input>
+    <ion-input type="text" [(ngModel)]="reg.address"  name="address" (keyup)="validate($event)"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label color="clear">lga</ion-label>
-    <ion-input type="text"  [(ngModel)]="reg.lga"  required></ion-input>
+    <ion-label color="clear">LGA<span [style.visibility]="regValidator.lga" class="required"> *</span></ion-label>
+    <ion-input type="text"  [(ngModel)]="reg.lga"  name="lga" (keyup)="validate($event)"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="clear">City</ion-label>
-    <ion-input type="text"  [(ngModel)]="reg.city"   required></ion-input>
+    <ion-input type="text"  [(ngModel)]="reg.city"   name="city"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="clear">State<span [style.visibility]="regValidator.state" class="required"> *</span></ion-label>
-    <ion-input type="text"  [(ngModel)]="reg.state" required></ion-input>
+    <ion-input type="text"  [(ngModel)]="reg.state" name="State" (keyup)="validate($event)"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="clear">Date Of Birth<span [style.visibility]="regValidator.dob" class="required"> *</span></ion-label>
-    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="reg.dob" pickerFormat="MM/DD/YYYY" ></ion-datetime>
+    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="reg.dob" pickerFormat="MM/DD/YYYY"  name="dob" (keyup)="validate($event)"></ion-datetime>
     <!--ion-input type="text" [(ngModel)]="reg.dob" name="dob" required></ion-input-->
   </ion-item>
 

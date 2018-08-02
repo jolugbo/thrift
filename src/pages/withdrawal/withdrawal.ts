@@ -11,7 +11,7 @@ import { Modal, ModalController } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-withdrawal',
   templateUrl: 'withdrawal.html',

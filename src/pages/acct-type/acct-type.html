@@ -30,9 +30,9 @@
     
     <ion-content padding>
       <ion-card >
+        <h2> Description</h2>
           <ion-item class="search-car-items" *ngFor="let account of AccountTypeResult.accounts">
-            <h2> {{account.firstName}} </h2>
-            <p>Description: {{account.desc}}</p><br/>
+            <p class"bigger-p"> {{account.desc}}</p><br/>
             <button ion-button primary item-end (click)="closeModalWthSlctn(account)"> Select</button>
           </ion-item>
       </ion-card>
