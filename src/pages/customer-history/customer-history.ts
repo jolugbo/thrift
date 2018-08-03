@@ -36,4 +36,4 @@ export class CustomerHistoryPage {
     this.customerHistoryResult = customerHistoryResult;
     console.log(customerHistoryResult);
   }
-}
+}  

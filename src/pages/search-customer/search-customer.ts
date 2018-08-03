@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Modal, ModalController } from 'ionic-angular';
 import {apiServices} from '../../providers/apiServices';
+import {utilServices} from '../../providers/util';
+
 
 /**
  * Generated class for the SearchCustomerPage page.
@@ -17,9 +19,10 @@ import {apiServices} from '../../providers/apiServices';
 export class SearchCustomerPage {
   customerRecords:any = [];
   customers:any = [];
+  responseData:any = [];
   filterVar='';
   constructor(public navCtrl: NavController, public navParams: NavParams,public apiServices: apiServices,
-    private modal: ModalController) {
+    private modal: ModalController,public utils:utilServices) {
     this.customerRecordList();
   }
 
@@ -53,8 +56,14 @@ export class SearchCustomerPage {
   fetchTransaction(id){
     this.apiServices.getCustomerTransactions(id).then((result) => {
       console.log(result);
+      this.responseData = result;
+      if(!this.responseData.error){
       const CustomerHistoryPage: Modal = this.modal.create("CustomerHistoryPage", { data: result });
       CustomerHistoryPage.present();
+      }
+      else{
+        this.utils.presentAlert('info',this.responseData.message);
+      }
   });
   }
 }

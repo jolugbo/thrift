@@ -13,10 +13,27 @@
     </ion-buttons>
   </ion-navbar>
 
-</ion-header>
+</ion-header> 
 
 
 
 <ion-content padding>
-
+  <ion-card *ngFor="let record of customerHistoryResult">
+    <ion-card-content>
+      <ion-card-title>
+          <h2 style="color:white"> Account Type - {{record.accountType}}</h2>
+      </ion-card-title>
+    <ion-item class="search-car-items">
+        <!--ion-thumbnail item-start>
+          <img src="assets/imgs/sample.jpg">
+        </ion-thumbnail-->
+        <p style="color:white">Transaction Type: {{record.transType}}<br/>
+        Amount.: {{record.transAmount}}<br/>
+        Transaction Date.: {{record.transDate}}<br/>
+        Account No: {{record.accountNo}}<br/>
+        Account Code: {{record.accountCode}}<br/>
+        </p>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
