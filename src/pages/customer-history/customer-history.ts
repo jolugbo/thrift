@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the CustomerHistoryPage page.
@@ -15,11 +15,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CustomerHistoryPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  customerHistoryResult:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private viewCtrl:ViewController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CustomerHistoryPage');
   }
+  closeModalWthoutSlctn(){
+    this.viewCtrl.dismiss();
+  }
 
+  closeModalWthSlctn(itemSelected){
+    this.viewCtrl.dismiss(itemSelected);
+  }
+  
+  ionViewWillLoad() {
+    const customerHistoryResult = this.navParams.get('data');
+    this.customerHistoryResult = customerHistoryResult;
+    console.log(customerHistoryResult);
+  }
 }

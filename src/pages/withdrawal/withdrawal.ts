@@ -60,8 +60,8 @@ export class WithdrawalPage {
           this.saveRec.agentId = this.responseData.id;
           this.apiService.withdrawals(this.saveRec).then((result) => {
             this.responseDatamsg = result;
-            this.utils.presentAlert('Success!',this.responseDatamsg.message);
-              this.saveRec.customerId= "";this.saveRec.transAmount= "";this.saveRec.accountId= "";this.saveRec.agentId= "";
+            this.utils.presentAlert('Info!',this.responseDatamsg.message);
+              this.saveRec.customerId= "";this.saveRec.transAmount= "";this.saveRec.accountId= "";
               this.displayRec.fullName= "";this.displayRec.AccountType= "";this.displayRec.BVN= "";this.displayRec.AccountNumber= "";this.displayRec.Lga= "";this.displayRec.Gender= "";
               
           });

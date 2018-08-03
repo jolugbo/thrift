@@ -38,6 +38,7 @@ export class LoginPage {
   }
   regPage: any;
   HomePage: any;
+  AgentData: any;
 
   loading = this.loadingCtrl.create({
     content: 'Please wait...'
@@ -56,10 +57,18 @@ export class LoginPage {
         //this.storage.set('intro-done', true);
         this.navCtrl.setRoot(IntroPage);
       }
+      else{
+        this.utils.localGet('AgentDetails').then((result) => {
+          this.AgentData = result;
+          if (this.AgentData != null) {
+            //this.storage.set('intro-done', true);
+            this.navCtrl.setRoot(this.HomePage);
+          }
+        })
+      }
     });
   }
   validate(ev) {
-    //console.log(ev.target.value);
     console.log(ev.srcElement.name);
     console.log(ev.target.value.length);
     if (ev.srcElement.name === "agentId") {
@@ -67,7 +76,6 @@ export class LoginPage {
         this.visibility1 = "visible";
       }
       else{
-        console.log('no got here');
         this.visibility1 = "hidden";
       }
     }
@@ -105,8 +113,10 @@ export class LoginPage {
         this.userRecord.token = this.generateToken();
         this.utils.localSave('AgentDetails', this.userRecord);
         this.apiServices.getAcctTypes().then((res) => {
-          console.log(res);
+          console.log(this.userRecord.id);
           this.utils.localSave('AccountTypes', res);
+        this.utils.localSave('agentid', this.userRecord.id);
+          this.storage.set('agentid', this.userRecord.id);
         });
         loading.dismiss();
         this.utils.presentAlert('Login Successful!', '<br/>Welcome ' + this.responseData.firstname);

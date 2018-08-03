@@ -6,6 +6,8 @@ import { WithdrawalPage } from '../withdrawal/withdrawal';
 import { SearchCustomerPage } from '../search-customer/search-customer';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Nav, Platform } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { utilServices } from '../../providers/util';
 
 export interface PageInterface {
   title: string;
@@ -31,7 +33,8 @@ export class MenuPage {
   pages: Array<{ title: string, component: any }>;
 
 
-  constructor(public navCtrl: NavController, public platform: Platform) {
+  constructor(public navCtrl: NavController,private storage: Storage,
+    public utils: utilServices, public platform: Platform) {
     // used for an example of ngFor and navigation
 
     this.pages = [
@@ -40,7 +43,6 @@ export class MenuPage {
       { title: 'Savings', component: Savings },
       { title: 'Withdrawals', component: WithdrawalPage },
       { title: 'Customers', component: SearchCustomerPage },
-      { title: 'Logout ', component: LoginPage },
     ];
   }
 
@@ -49,6 +51,9 @@ export class MenuPage {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
-
+  logout() {
+    this.utils.localSave('AgentDetails', null);
+    this.nav.setRoot(LoginPage);
+  }
 }
 

@@ -1,23 +1,32 @@
 page-search-customer {
+ 
+  .scroll-content{
+    background-color: rgba(23, 14, 1, 0.639);
+  }
     .header-row{
         font-size: 20px;
     } 
      .body-row{
         font-size: 15px;
-        padding:1px;
-        margin-right:10px;
+        padding: 1px;
+        margin-right: -25px;
+        border-bottom: 1px solid black;
     }
     .grid{
         margin-left:-10px;
     }
-    .col{    
-        margin-right: -10px;
-        padding: 2px;
+    .item-inner {
+        padding-right: 1px !important;
     }
     .item-md{
         padding-left:6px;
     }
     .btn-col{
-        margin-right:-20px
+        margin-right:-30px;
+        margin-top: -10px;
+    }
+    .btns{
+    font-size: 20px;
+    text-decoration: underline;
     }
 }

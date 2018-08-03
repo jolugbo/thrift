@@ -232,6 +232,7 @@ export class RegisterPage {
          this.utils.presentAlert('Success!',this.responseData.message);
          this.reg = {pics:'',phone:'',bvn:'',fname:'',accounttype:'',lname:'',mname:'',email:'',address:'',city:'',state:'',dob:'',gender:'', lga:''};
         // this.navCtrl.setRoot(this.HomePage); 
+        this.displayRec.AccountType='';
       }
       else {
         this.utils.presentAlert('Reg Error!',this.responseData.message);

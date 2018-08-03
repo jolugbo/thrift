@@ -29,10 +29,10 @@ export class Savings {
         Gender: '',
     }
     saveValidator ={
-        customerId:'hidden',
-        transAmount:'hidden',
-        accountId:'hidden',
-        agentId:'hidden',
+        customerId:'visible',
+        transAmount:'visible',
+        accountId:'visible',
+        agentId:'visible',
       }
     constructor(private apiService: apiServices, private modal: ModalController,public loadingCtrl:LoadingController, 
         private utils: utilServices) {
@@ -42,11 +42,18 @@ export class Savings {
                 this.accountTypes = result;
                 console.log(this.apiService.acctType);
             });
+            this.utils.localGet('AgentDetails').then((result) => {
+                this.responseData = result;
+                this.saveRec.agentId = this.responseData.id;
+                console.log(this.saveRec.agentId);
+            });
     }
     setAcctTypes() {
 
     }
     saveRecord() {
+        
+      
             var loading = this.loadingCtrl.create({
             content: 'Please wait...'
           });
@@ -71,18 +78,16 @@ export class Savings {
             this.saveValidator.accountId = "visible";
             return;
           }
-        this.utils.localGet('AgentDetails').then((result) => {
-            this.responseData = result;
-            this.saveRec.agentId = this.responseData.id;
+          console.log(this.saveRec);
             this.apiService.savings(this.saveRec).then((result) => {
+                loading.dismiss(); 
                 this.responseData = result;
                 console.log(result);
-                this.utils.presentAlert('Success!',this.responseData.message);
-                this.saveRec.customerId= "";this.saveRec.transAmount= "";this.saveRec.accountId= "";this.saveRec.agentId= "";
+                this.utils.presentAlert('Info!',this.responseData.message);
+                this.saveRec.customerId= "";this.saveRec.transAmount= "";this.saveRec.accountId= "";
                 this.displayRec.fullName= "";this.displayRec.AccountType= "";this.displayRec.BVN= "";this.displayRec.AccountNumber= "";this.displayRec.Lga= "";this.displayRec.Gender= "";
                 
             });
-        });
     }
     searchRecord() {
         this.apiService.searchRec(this.searchParam).then((result) => {

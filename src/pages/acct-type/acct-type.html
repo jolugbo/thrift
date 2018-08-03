@@ -14,25 +14,13 @@
     </ion-navbar>
   
   </ion-header>
-  
-  
-  <ion-header>
-
-      <ion-navbar>
-        <ion-title>search</ion-title>
-        <ion-buttons end>
-          <button ion-button (click)="closeModalWthoutSlctn()"> Close </button>
-        </ion-buttons>
-      </ion-navbar>
-    
-    </ion-header>
     
     
     <ion-content padding>
       <ion-card >
         <h2> Description</h2>
           <ion-item class="search-car-items" *ngFor="let account of AccountTypeResult.accounts">
-            <p class"bigger-p"> {{account.desc}}</p><br/>
+            <p class="bigger-p"> {{account.desc}} </p>
             <button ion-button primary item-end (click)="closeModalWthSlctn(account)"> Select</button>
           </ion-item>
       </ion-card>
